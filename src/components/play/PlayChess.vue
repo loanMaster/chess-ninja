@@ -111,7 +111,6 @@ import MoveHistory from './MoveHistory.vue';
 import SelectMoveButtons from './SelectMoveButtons.vue';
 import GameControls from './GameControls.vue';
 import ChessBoard from './ChessBoard.vue';
-import HistoryControl from './HistoryControl.vue';
 import { useChessBoardStore } from 'stores/chess-board.store';
 import { useChessGameStore } from 'stores/chess-game.store';
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
@@ -203,10 +202,6 @@ async function showInstructions() {
   };
   createTimer();
 }
-
-const isPortrait = computed(() => {
-  return useAppStore().orientation === 'portrait';
-});
 
 const piecesVisible = computed(() => {
   return useChessBoardStore().piecesVisible;

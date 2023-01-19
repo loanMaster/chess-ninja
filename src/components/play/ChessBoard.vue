@@ -14,7 +14,7 @@ import {
 } from '/src/chess-board/chess-board.interface';
 import { Move, PossibleMove } from '/src/engine/chess-game';
 import { useChessGameStore } from 'stores/chess-game.store';
-import { onBeforeUnmount, onMounted, Ref, ref } from 'vue';
+import { onBeforeUnmount, onMounted, ref } from 'vue';
 import { useChessBoardStore } from 'stores/chess-board.store';
 import { preloadAssets } from 'src/util/preload-assets';
 

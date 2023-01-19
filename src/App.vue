@@ -5,7 +5,7 @@
 <script setup lang="ts">
 import { useAppStore } from './stores/app-store';
 import { useI18n } from 'vue-i18n';
-import { onBeforeMount, onMounted } from 'vue';
+import { onBeforeMount } from 'vue';
 import {
   NavigationGuardNext,
   RouteLocationNormalized,

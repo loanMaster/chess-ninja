@@ -35,7 +35,6 @@
 import { computed, onMounted, Ref, ref } from 'vue';
 import { Move, PossibleMove } from '/src/engine/chess-game';
 import { useChessGameStore } from 'stores/chess-game.store';
-import { useChessBoardStore } from 'stores/chess-board.store';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
@@ -78,14 +77,6 @@ const lastOpponentMove = computed(() => {
       description: t('Make a move'),
     }
   );
-});
-
-const indexInHistory = computed(() => {
-  return useChessGameStore().position.indexInHistory;
-});
-
-const moveHistory = computed(() => {
-  return useChessGameStore().position.moveHistory;
 });
 
 function makeMove(move: Move) {

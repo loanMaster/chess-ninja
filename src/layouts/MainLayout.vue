@@ -100,7 +100,6 @@ const leftDrawerOpen = ref(false);
 
 const $q = useQuasar();
 const store = useAppStore();
-const { t } = useI18n();
 
 onMounted(() => {
   leftDrawerOpen.value = false;
@@ -116,16 +115,10 @@ function toggleDarkMode() {
 }
 
 const i18n = useI18n();
-const router = useRouter();
 
-function toggleLeftDrawer() {
-  leftDrawerOpen.value = !leftDrawerOpen.value;
-}
 function setLanguage(lang: string) {
   store.setLanguage(i18n, lang);
 }
-
-const links1 = ref([]);
 </script>
 
 <style scoped lang="scss">
