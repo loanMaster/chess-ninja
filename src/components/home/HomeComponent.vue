@@ -96,10 +96,6 @@ const exercises = ref([
   'save-the-king',
 ]);
 
-function getRating(nameOfTheGame: string): number {
-  return useExerciseStore().ratings[nameOfTheGame] || 0;
-}
-
 function scrollTo(anchor: string) {
   const el = document.getElementById(anchor);
   el!.scrollIntoView();

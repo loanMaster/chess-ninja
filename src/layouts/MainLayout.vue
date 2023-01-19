@@ -95,7 +95,6 @@ import { useAppStore } from 'stores/app-store';
 import { useI18n } from 'vue-i18n';
 import { useQuasar } from 'quasar';
 import { setDarkMode } from 'src/util/dark-mode.toggle';
-import { useRouter } from 'vue-router';
 const leftDrawerOpen = ref(false);
 
 const $q = useQuasar();
