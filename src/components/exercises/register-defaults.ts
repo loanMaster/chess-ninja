@@ -1,6 +1,6 @@
 import { useQuasar } from 'quasar';
 import { useI18n } from 'vue-i18n';
-import { ref, onBeforeUnmount, computed } from 'vue';
+import { ref, onBeforeUnmount } from 'vue';
 import { Subject } from 'rxjs';
 import { useRoute } from 'vue-router';
 import { useExerciseStore } from 'stores/exercise.store';

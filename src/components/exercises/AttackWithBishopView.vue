@@ -46,7 +46,7 @@ import { useRouter } from 'vue-router';
 import { ChessUtils } from 'src/util/chess-utils';
 import { useExerciseStore } from 'stores/exercise.store';
 
-const { revealed, destroy, store, inputDisabled } = createExerciseContext({
+const { revealed,store, inputDisabled } = createExerciseContext({
   nextQuestionCb: () => nextQuestion(),
   startCb: () => start(),
 });

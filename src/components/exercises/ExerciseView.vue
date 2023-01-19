@@ -10,11 +10,9 @@
 </template>
 
 <script setup lang="ts">
-import ExerciseInstructions from 'src/components/exercises/shared/ExerciseInstructions.vue';
 import ExerciseHeader from 'src/components/exercises/shared/ExerciseHeader.vue';
 import ExerciseHUD from 'src/components/exercises/shared/ExerciseHUD.vue';
 import ExerciseFooter from 'src/components/exercises/shared/ExerciseFooter.vue';
-import { TweenService } from 'src/util/tween.service';
 import { onMounted, ref } from 'vue';
 import { useExerciseStore } from 'stores/exercise.store';
 

@@ -51,7 +51,6 @@ import { useAppStore } from 'stores/app-store';
 
 let board: Ref<ChessBoard | undefined> = ref(undefined);
 const router = useRouter();
-const boardContainer = ref();
 const blackToMove = ref(false);
 
 onMounted(() => {

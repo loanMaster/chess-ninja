@@ -58,7 +58,7 @@ import { ChessUtils } from 'src/util/chess-utils';
 import { useExerciseStore } from 'stores/exercise.store';
 import { ChessGame } from 'src/engine/chess-game';
 
-const { revealed, destroy, store, inputDisabled } = createExerciseContext({
+const { revealed, store, inputDisabled } = createExerciseContext({
   nextQuestionCb: () => nextQuestion(),
   startCb: () => start(),
 });

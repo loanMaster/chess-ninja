@@ -32,7 +32,7 @@ const elapsedTimeFormatted = computed(() => {
   return `${padNumber(minutes, 2)}:${padNumber(seconds, 2)}`;
 });
 
-store.$onAction(({ name, after }) => {
+store.$onAction(({ name }) => {
   if (name === 'beginExercise') {
     lastTick = Date.now();
   }

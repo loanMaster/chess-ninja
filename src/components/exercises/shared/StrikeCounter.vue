@@ -9,7 +9,6 @@
 
 <script setup lang="ts">
 import { matClose } from '@quasar/extras/material-icons';
-import { useAppStore } from 'stores/app-store';
 import { useExerciseStore } from 'stores/exercise.store';
 const store = useExerciseStore();
 </script>

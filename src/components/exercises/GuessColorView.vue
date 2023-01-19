@@ -45,16 +45,15 @@
 </template>
 
 <script setup lang="ts">
-import SolutionBanner from 'src/components/exercises/shared/SolutionBanner.vue';
 import ExerciseBoard from 'src/components/exercises/shared/ExerciseBoard.vue';
-import { ref, Ref, onBeforeMount, computed, onMounted } from 'vue';
+import { ref, Ref, onBeforeMount, onMounted } from 'vue';
 import { exerciseUtils } from 'components/exercises/exercise.utils';
 import { createExerciseContext } from 'components/exercises/register-defaults';
 import { useRouter } from 'vue-router';
 import { ChessUtils } from 'src/util/chess-utils';
 import { useExerciseStore } from 'stores/exercise.store';
 
-const { revealed, destroy, store, inputDisabled } = createExerciseContext({
+const { revealed, store, inputDisabled } = createExerciseContext({
   nextQuestionCb: () => nextQuestion(),
   startCb: () => start(),
 });
