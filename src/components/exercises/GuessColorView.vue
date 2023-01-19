@@ -64,7 +64,7 @@ const square = ref('');
 const alreadySquares: Ref<string[]> = ref([]);
 
 onBeforeMount(() => {
-  const numberOfQuestions = 5;
+  const numberOfQuestions = 10;
   exerciseUtils.createExercise(numberOfQuestions);
 });
 

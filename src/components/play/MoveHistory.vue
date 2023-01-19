@@ -11,23 +11,21 @@
       class="row"
       :class="isNavigatingThroughHistory && isCurrentMove(idx) ? 'bg-red' : ''"
     >
-      <span class="col-4">{{ idx + 1 }}.</span>
-      <div class="row col-8">
-        <span class="col-6">{{
-          move.white
-            ? `${move.white.description}${
-                move.white.checkmate ? '#' : move.white.check ? '!' : ''
-              }`
-            : ''
-        }}</span>
-        <span class="col-6">{{
-          move.black
-            ? `${move.black.description}${
-                move.black.checkmate ? '#' : move.black.check ? '!' : ''
-              }`
-            : ''
-        }}</span>
-      </div>
+      {{ idx + 1 }}.
+      {{
+        move.white
+          ? `${move.white.description}${
+              move.white.checkmate ? '#' : move.white.check ? '!' : ''
+            }`
+          : ''
+      }}
+      {{
+        move.black
+          ? `${move.black.description}${
+              move.black.checkmate ? '#' : move.black.check ? '!' : ''
+            }`
+          : ''
+      }}
     </div>
   </div>
 </template>

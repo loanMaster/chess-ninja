@@ -3,7 +3,7 @@ import $ from 'jquery';
 /* eslint-disable */
 
 const COLUMNS = 'abcdefgh'.split('');
-const DEFAULT_DRAG_THROTTLE_RATE = 20;
+const DEFAULT_DRAG_THROTTLE_RATE = 1;
 const ELLIPSIS = '…';
 const MINIMUM_JQUERY_VERSION = '1.8.3';
 const RUN_ASSERTS = false;

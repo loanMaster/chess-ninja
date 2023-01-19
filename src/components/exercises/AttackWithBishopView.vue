@@ -46,7 +46,7 @@ import { useRouter } from 'vue-router';
 import { ChessUtils } from 'src/util/chess-utils';
 import { useExerciseStore } from 'stores/exercise.store';
 
-const { revealed,store, inputDisabled } = createExerciseContext({
+const { revealed, store, inputDisabled } = createExerciseContext({
   nextQuestionCb: () => nextQuestion(),
   startCb: () => start(),
 });
@@ -58,7 +58,7 @@ const king = ref('');
 const side = ref('w');
 
 onBeforeMount(() => {
-  const numberOfQuestions = 5;
+  const numberOfQuestions = 10;
   exerciseUtils.createExercise(numberOfQuestions);
 });
 

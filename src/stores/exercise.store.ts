@@ -57,6 +57,22 @@ const saveRatings = (ratings: Ratings): void => {
   localStorage.setItem('ratings', JSON.stringify(ratings));
 };
 
+const calculateRating = (strikes: number, duration: number) => {
+  if (strikes > 2) {
+    return 1;
+  }
+  if (strikes > 1) {
+    return 2;
+  }
+  if (duration > 30000) {
+    return 3;
+  }
+  if (duration > 20000) {
+    return 4;
+  }
+  return 5;
+};
+
 export const useExerciseStore = defineStore('exercise', {
   state: (): ExerciseState => {
     const ratings = loadRatings();
@@ -89,7 +105,10 @@ export const useExerciseStore = defineStore('exercise', {
     finishExercise() {
       this.exercise.duration = Date.now() - this.exercise.beginTimeStamp;
       this.exercise.state = 'finished';
-      this.exercise.rating = 1; // TODO mapScoreToRating(this.exercise.score);
+      this.exercise.rating = calculateRating(
+        this.exercise.totalStrikeCount,
+        this.exercise.duration
+      );
       this.updateRating({
         value: this.exercise.rating,
         nameOfTheGame: this.exercise.nameOfTheGame,

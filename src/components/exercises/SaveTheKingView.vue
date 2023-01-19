@@ -75,7 +75,7 @@ const pieceTypes = ['Q', 'B', 'N', 'R'];
 const isCheck = ref(false);
 
 onBeforeMount(() => {
-  const numberOfQuestions = 5;
+  const numberOfQuestions = 10;
   exerciseUtils.createExercise(numberOfQuestions);
 });
 

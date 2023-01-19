@@ -5,11 +5,11 @@
       style="max-height: 100%; overflow: hidden"
     >
       <div class="col-3 q-pt-lg xs-hide sm-hide"></div>
-      <div class="flex-1">
+      <div class="flex-1 q-my-md" style="max-height: 100%">
         <div
-          class="bg-secondary q-py-md"
+          class="bg-secondary"
           style="
-            aspect-ratio: 1;
+            aspect-ratio: 783/1000;
             max-width: 100%;
             max-height: 100%;
             margin: auto;
@@ -19,7 +19,7 @@
         </div>
       </div>
       <div
-        class="col-3 q-pt-lg q-gutter-sm column-md row-sm row-xs items-center justify-md-start justify-sm-center justify-xs-center"
+        class="col-3 q-pt-md-lg q-pt-sm-xs q-gutter-sm column-md row-sm row-xs items-center justify-md-start justify-sm-center justify-xs-center"
       >
         <q-btn color="primary" @click="reset" :disable="disabled">{{
           $t('Reset')

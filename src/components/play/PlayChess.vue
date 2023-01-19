@@ -60,8 +60,8 @@
               >
                 <ChessBoard :pieces-visible="piecesVisible" />
                 <div
-                  class="absolute-full no-pointer-events column justify-center items-center"
-                  style="aspect-ratio: 1; height: 100%;"
+                  class="absolute-full no-pointer-events column justify-center items-center q-mx-auto"
+                  style="aspect-ratio: 1; height: 100%"
                 >
                   <div
                     v-if="isFinished"

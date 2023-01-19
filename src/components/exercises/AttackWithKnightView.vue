@@ -60,7 +60,7 @@ const side = ref('w');
 const chessGame = new ChessGame();
 
 onBeforeMount(() => {
-  const numberOfQuestions = 5;
+  const numberOfQuestions = 10;
   exerciseUtils.createExercise(numberOfQuestions);
 });
 

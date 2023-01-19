@@ -69,7 +69,7 @@ const square1 = ref('');
 const square2 = ref('');
 
 onBeforeMount(() => {
-  const numberOfQuestions = 5;
+  const numberOfQuestions = 10;
   exerciseUtils.createExercise(numberOfQuestions);
 });
 
