@@ -58,10 +58,13 @@ const saveRatings = (ratings: Ratings): void => {
 };
 
 const calculateRating = (strikes: number, duration: number) => {
-  if (strikes > 2) {
-    return 1;
+  if (strikes > 3) {
+    return 0;
   }
   if (strikes > 1) {
+    return 1;
+  }
+  if (strikes > 0) {
     return 2;
   }
   if (duration > 30000) {

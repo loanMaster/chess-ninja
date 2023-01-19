@@ -47,7 +47,6 @@ export function createExerciseContext({
     store,
     $q,
     route,
-    onSolutionConfirmed,
     t,
   };
 }
