@@ -1,0 +1,57 @@
+{
+  "name": "chess-ninja-app",
+  "version": "0.0.1",
+  "description": "Chess Ninja",
+  "productName": "Chess Ninja",
+  "author": "Incognito",
+  "private": true,
+  "scripts": {
+    "lint": "eslint --fix --ext .js,.ts,.vue ./ ",
+    "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
+    "test": "playwright test --headed",
+    "server": "simple-static-server",
+    "server-prod": "cross-env-shell KEY_FILE=/etc/letsencrypt/live/chessninja.org/privkey.pem CERT_FILE=/etc/letsencrypt/live/chessninja.org/fullchain.pem PORT=443 simple-static-server"
+  },
+  "dependencies": {
+    "@chrisoakman/chessboardjs": "^1.0.0",
+    "@loanmaster/simple-static-server": "^0.0.9",
+    "@quasar/extras": "^1.0.0",
+    "@userfront/core": "^0.4.6",
+    "chart.js": "^4.0.1",
+    "howler": "^2.2.3",
+    "js-chess-engine": "^1.0.2",
+    "jwt-decode": "^3.1.2",
+    "pinia": "^2.0.11",
+    "quasar": "^2.6.0",
+    "rxjs": "^7.5.7",
+    "uuid": "^9.0.0",
+    "vue": "^3.0.0",
+    "vue-i18n": "^9.2.2",
+    "vue-inline-svg": "^3.1.0",
+    "vue-router": "^4.0.0"
+  },
+  "devDependencies": {
+    "@intlify/vite-plugin-vue-i18n": "^3.3.1",
+    "@playwright/test": "^1.29.0",
+    "@quasar/app-vite": "^1.0.0",
+    "@types/howler": "^2.2.7",
+    "@types/jwt-decode": "^3.1.0",
+    "@types/node": "^12.20.21",
+    "@types/uuid": "^8.3.4",
+    "@typescript-eslint/eslint-plugin": "^5.10.0",
+    "@typescript-eslint/parser": "^5.10.0",
+    "autoprefixer": "^10.4.2",
+    "eslint": "^8.10.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-vue": "^9.0.0",
+    "prettier": "^2.5.1",
+    "typescript": "^4.5.4",
+    "worker-plugin": "^5.0.1",
+    "workerize-loader": "^2.0.2"
+  },
+  "engines": {
+    "node": "^18 || ^16 || ^14.19",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  }
+}

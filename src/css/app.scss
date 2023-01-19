@@ -1,0 +1,113 @@
+// app global css in SCSS form
+// $
+
+// app global css in SCSS form
+// $
+.text-color-default {
+  color: black;
+}
+.body--dark {
+  .text-color-default {
+    color: white;
+  }
+  .white-border {
+    border: 1px solid white;
+  }
+}
+
+.flex-auto {
+  flex: auto;
+}
+
+.flex-1 {
+  flex: 1 1 0;
+}
+
+.transition-duration-md {
+  transition-duration: 0.5s;
+}
+
+.transition-duration-sm {
+  transition-duration: 0.25s;
+}
+
+.zoom-on-hover:hover {
+  transform: scale(1.05);
+}
+.zoom-on-hover {
+  transition-duration: 1s;
+}
+
+.max-width-sm {
+  max-width: $breakpoint-sm;
+}
+
+.max-width-md {
+  max-width: $breakpoint-md;
+}
+
+.max-width-xs {
+  max-width: $breakpoint-xs;
+}
+
+.content {
+  width: 100%;
+  max-width: $breakpoint-sm;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.bg-gradient {
+  background-image: linear-gradient(to bottom right, #ffffaa55, #aaffff55);
+}
+.body--dark .bg-gradient {
+  background-image: none;
+}
+
+.g-hide-pieces img {
+  opacity: 0;
+}
+
+.g-hidden {
+  visibility: hidden;
+}
+
+.g-board img {
+  transition: opacity 1s;
+}
+
+.g-hide-notations [class^='notation'] {
+  opacity: 0;
+}
+
+.g-board {
+  touch-action: manipulation;
+}
+
+.g-chess-board-container {
+  width: 100%;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+@media screen and (orientation: portrait) {
+  .g-chess-board-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.g-highlight {
+  box-shadow: inset 0 0 3px 3px blue;
+}
+
+.g-error-highlight {
+  box-shadow: inset 0 0 3px 3px red;
+}
