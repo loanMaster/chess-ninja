@@ -1717,7 +1717,7 @@ export function constructor(containerElOrString, config) {
     if (!isDragging) return;
 
     // prevent screen from scrolling
-    // evt.preventDefault()
+    evt.preventDefault()
 
     updateDraggedPiece(
       evt.originalEvent.changedTouches[0].pageX,
@@ -1848,8 +1848,13 @@ export function constructor(containerElOrString, config) {
         '.' + CSS.sparePieces + ' .' + CSS.piece,
         touchstartSparePiece
       );
+      $.event.special.touchstart = {
+        setup: function( _, ns, handle ){
+          this.addEventListener("touchmove", handle, { passive: false });
+        }
+      };
       $window
-        .on('touchmove', throttledTouchmoveWindow, {passive: false})
+        .on('touchmove', throttledTouchmoveWindow)
         .on('touchend', touchendWindow);
     }
   }
