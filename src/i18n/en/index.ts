@@ -25,7 +25,7 @@ export default {
       title: 'Attack with the bishop',
     },
     'attack-with-knight': {
-      title: 'Attach with the knight',
+      title: 'Attack with the knight',
     },
     'save-the-king': {
       title: 'Save the king',
