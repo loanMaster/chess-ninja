@@ -133,8 +133,10 @@ const touchIcon = ref();
 let timeout: any;
 
 onMounted(() => {
-  const difficulty = Number(route.query.difficulty) || 0;
-  useChessGameStore().$patch({ engineLevel: difficulty });
+  const difficulty = route.query.difficulty;
+  if (difficulty) {
+    useChessGameStore().$patch({ engineLevel: Number(difficulty) });
+  }
   useChessGameStore().$subscribe(() => {
     if (useChessGameStore().position.isFinished) {
       tab.value = 'chess-board';
