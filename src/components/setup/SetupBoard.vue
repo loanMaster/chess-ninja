@@ -46,12 +46,12 @@ import { ChessBoard } from '/src/chess-board/chess-board.interface';
 import { useChessGameStore } from 'stores/chess-game.store';
 import { useRouter } from 'vue-router';
 import { useAppStore } from 'stores/app-store';
-import {useI18n} from "vue-i18n";
+import { useI18n } from 'vue-i18n';
 
 let board: Ref<ChessBoard | undefined> = ref(undefined);
 const router = useRouter();
 const blackToMove = ref(false);
-const { t } = useI18n()
+const { t } = useI18n();
 
 onMounted(() => {
   useChessGameStore().stopGame();
