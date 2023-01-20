@@ -38,7 +38,7 @@
             class="column flex-1 q-py-xs q-px-xs-xs q-px-sm-xs overflow-hidden"
           >
             <div class="row items-center justify-between overflow-hidden">
-              <div/>
+              <div />
               <div>
                 <q-toggle
                   :model-value="piecesVisible"
@@ -47,8 +47,18 @@
                   color="secondary"
                   :unchecked-icon="matVisibilityOff"
                 />
-                <q-btn :icon="matUndo" @click="undo" :disable="firstTurn || aiTurn" style="transition-duration: 0.5s; transition-delay: 0.2s"/>
-                <q-btn :icon="matRedo" @click="redo" :disable="lastTurn || aiTurn" style="transition-duration: 0.5s; transition-delay: 0.2s"/>
+                <q-btn
+                  :icon="matUndo"
+                  @click="undo"
+                  :disable="firstTurn || aiTurn"
+                  style="transition-duration: 0.5s; transition-delay: 0.2s"
+                />
+                <q-btn
+                  :icon="matRedo"
+                  @click="redo"
+                  :disable="lastTurn || aiTurn"
+                  style="transition-duration: 0.5s; transition-delay: 0.2s"
+                />
               </div>
               <q-spinner-hourglass
                 :style="{
@@ -197,11 +207,14 @@ const aiTurn = computed(() => {
   return !useChessGameStore().playersTurn;
 });
 const firstTurn = computed(() => {
-  return useChessGameStore().position.indexInHistory < 1
-})
+  return useChessGameStore().position.indexInHistory < 1;
+});
 const lastTurn = computed(() => {
-  return useChessGameStore().position.indexInHistory === useChessGameStore().position.moveHistory.length - 1
-})
+  return (
+    useChessGameStore().position.indexInHistory ===
+    useChessGameStore().position.moveHistory.length - 1
+  );
+});
 const neverPlayed = computed(() => {
   return useAppStore().neverPlayed;
 });

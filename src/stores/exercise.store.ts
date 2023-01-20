@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import {exerciseStats} from "src/util/exercises.const";
+import { exerciseStats } from 'src/util/exercises.const';
 
 export interface Ratings {
   [key: string]: number;
@@ -58,7 +58,11 @@ const saveRatings = (ratings: Ratings): void => {
   localStorage.setItem('ratings', JSON.stringify(ratings));
 };
 
-const calculateRating = (exerciseName: string, strikes: number, duration: number) => {
+const calculateRating = (
+  exerciseName: string,
+  strikes: number,
+  duration: number
+) => {
   if (strikes > 3) {
     return 0;
   }

@@ -27,8 +27,17 @@
               s</span
             >
           </div>
-          <div class="row justify-center" v-if="store.exercise.totalStrikeCount === 0 && store.exercise.rating < 5">
-            <span>{{ $t('Beat _DURATION_s to get one more star', { duration : durationForNextStar }) }}</span>
+          <div
+            class="row justify-center"
+            v-if="
+              store.exercise.totalStrikeCount === 0 && store.exercise.rating < 5
+            "
+          >
+            <span>{{
+              $t('Beat _DURATION_s to get one more star', {
+                duration: durationForNextStar,
+              })
+            }}</span>
           </div>
         </div>
       </div>
@@ -50,7 +59,7 @@ import { useRouter } from 'vue-router';
 import { useExerciseStore } from 'stores/exercise.store';
 import { formatTime } from 'src/util/format-number';
 import { computed } from 'vue';
-import {exerciseStats} from "src/util/exercises.const";
+import { exerciseStats } from 'src/util/exercises.const';
 
 const store = useExerciseStore();
 const router = useRouter();
@@ -70,14 +79,16 @@ function formatDuration(num: number, lang: string) {
 }
 
 const durationForNextStar = computed(() => {
-  const duration = store.exercise.rating === 3 ? exerciseStats[store.exercise.nameOfTheGame].threeStarRating
-    : exerciseStats[store.exercise.nameOfTheGame].fourStarRating
-  return formatDuration(duration / 1000, useAppStore().language)
-})
+  const duration =
+    store.exercise.rating === 3
+      ? exerciseStats[store.exercise.nameOfTheGame].threeStarRating
+      : exerciseStats[store.exercise.nameOfTheGame].fourStarRating;
+  return formatDuration(duration / 1000, useAppStore().language);
+});
 
 const language = computed(() => {
-  return useAppStore().language
-})
+  return useAppStore().language;
+});
 </script>
 
 <style scoped>

@@ -30,7 +30,10 @@
         </div>
       </div>
     </div>
-    <div :style="{ opacity: revealed ? 1 : 0 }" class="no-pointer-events absolute-full column items-stretch q-pa-lg">
+    <div
+      :style="{ opacity: revealed ? 1 : 0 }"
+      class="no-pointer-events absolute-full column items-stretch q-pa-lg"
+    >
       <div
         class="text-h5 text-center"
         :style="{ color: wasCorrect ? 'green' : 'red' }"

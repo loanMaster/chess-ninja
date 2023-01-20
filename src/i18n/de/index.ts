@@ -80,5 +80,6 @@ export default {
   Draw: 'Unentschieden',
   'ChessNinja is a website that teaches you to play chess blind.':
     'ChessNinja ist eine Website, die dir dabei hilft, Blindschach zu lernen',
-  'Beat _DURATION_s to get one more star': 'Sei schneller als {duration} Sekunden, um einen zusätzlichen Stern zu erhalten'
+  'Beat _DURATION_s to get one more star':
+    'Sei schneller als {duration} Sekunden, um einen zusätzlichen Stern zu erhalten',
 };
