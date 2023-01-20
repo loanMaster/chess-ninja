@@ -3,6 +3,10 @@
 
 // app global css in SCSS form
 // $
+* {
+  user-select: none;
+}
+
 .text-color-default {
   color: black;
 }
