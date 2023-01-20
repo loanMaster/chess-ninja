@@ -58,10 +58,7 @@ import { useRouter } from 'vue-router';
 import { ChessUtils } from 'src/util/chess-utils';
 import { useExerciseStore } from 'stores/exercise.store';
 
-const { revealed, store, inputDisabled } = createExerciseContext({
-  nextQuestionCb: () => nextQuestion(),
-  startCb: () => start(),
-});
+const { revealed, store, inputDisabled } = createExerciseContext();
 
 const wasCorrect = ref(false);
 const router = useRouter();
@@ -75,12 +72,9 @@ onBeforeMount(() => {
 
 onMounted(async () => {
   inputDisabled.value = true;
-});
-
-async function start() {
   useExerciseStore().beginExercise();
   nextQuestion();
-}
+});
 
 async function nextQuestion() {
   if (

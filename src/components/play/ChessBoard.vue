@@ -12,7 +12,7 @@ import {
 } from '/src/chess-board/chess-board.interface';
 import { Move, PossibleMove } from '/src/engine/chess-game';
 import { useChessGameStore } from 'stores/chess-game.store';
-import {onActivated, onBeforeUnmount, onDeactivated, onMounted } from 'vue';
+import { onActivated, onDeactivated, onMounted } from 'vue';
 import { useChessBoardStore } from 'stores/chess-board.store';
 import { preloadAssets } from 'src/util/preload-assets';
 
@@ -60,7 +60,7 @@ function createBoard(color: string, fen?: string) {
 useChessGameStore().$onAction(({ name, after }) => {
   after(() => {
     if (!board) {
-      return
+      return;
     }
     if (name === 'playerMove') {
       board.position(useChessGameStore().position.fen, false);
@@ -75,8 +75,7 @@ useChessGameStore().$onAction(({ name, after }) => {
       );
       board.setDraggable(
         !useChessGameStore().position.isFinished &&
-        useChessGameStore().playerColor ===
-        useChessGameStore().position.turn
+          useChessGameStore().playerColor === useChessGameStore().position.turn
       );
     }
   });
@@ -136,13 +135,13 @@ onActivated(() => {
     if (lastMove) {
       highlight(lastMove);
     }
-  })
-})
+  });
+});
 
 onDeactivated(() => {
   if (board) {
     board.destroy();
     board = undefined;
   }
-})
+});
 </script>

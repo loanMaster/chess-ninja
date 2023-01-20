@@ -5,13 +5,7 @@ import { Subject } from 'rxjs';
 import { useRoute } from 'vue-router';
 import { useExerciseStore } from 'stores/exercise.store';
 
-export function createExerciseContext({
-  nextQuestionCb,
-  startCb,
-}: {
-  nextQuestionCb: () => any;
-  startCb: () => any;
-}) {
+export function createExerciseContext() {
   const store = useExerciseStore();
   const $q = useQuasar();
   const { t } = useI18n();
@@ -25,20 +19,6 @@ export function createExerciseContext({
     destroy.next();
     destroy.complete();
   });
-
-  store.$onAction(({ name, after }) => {
-    after(async () => {
-      if (name === 'playerReady') {
-        startCb();
-      }
-    });
-  });
-
-  function onSolutionConfirmed() {
-    if (revealed.value) {
-      nextQuestionCb();
-    }
-  }
 
   return {
     revealed,

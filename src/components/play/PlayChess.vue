@@ -2,7 +2,7 @@
   <div class="column flex-1">
     <div class="row flex-1" style="max-height: 100%; overflow: hidden">
       <div
-        class="col-2 q-pb-sm sm-hide xs-hide"
+        class="col-lg-2 col-md-3 q-pb-sm sm-hide xs-hide"
         style="max-height: 100%; overflow-y: hidden"
       >
         <q-card class="q-px-sm q-ma-sm" style="height: 100%">
@@ -10,7 +10,7 @@
         </q-card>
       </div>
       <div
-        class="col-md-7 col-sm-12 column justify-start align-start"
+        class="col-lg-7 col-md-6 col-sm-12 column justify-start align-start"
         style="max-height: 100%; max-width: 100%"
       >
         <q-tabs v-model="tab" style="flex-wrap: wrap">
@@ -27,10 +27,18 @@
             class="md-hide lg-hide xl-hide xxl-hide"
           />
         </q-tabs>
-        <q-tab-panels v-model="tab" animated :keep-alive="true" class="flex-1 column">
-          <q-tab-panel name="chess-board" class="column flex-1 q-py-xs q-px-xs-xs q-px-sm-xs overflow-hidden">
+        <q-tab-panels
+          v-model="tab"
+          animated
+          :keep-alive="true"
+          class="flex-1 column"
+        >
+          <q-tab-panel
+            name="chess-board"
+            class="column flex-1 q-py-xs q-px-xs-xs q-px-sm-xs overflow-hidden"
+          >
             <div class="row items-center justify-between overflow-hidden">
-              <div/>
+              <div />
               <div>
                 <q-toggle
                   :model-value="piecesVisible"
@@ -68,7 +76,7 @@
                   <div
                     v-if="isFinished"
                     class="text-h4 bg-secondary q-pa-md non-selectable"
-                    style="opacity: 0.7;"
+                    style="opacity: 0.7"
                   >
                     {{ $t(isCheckmate ? 'Checkmate' : 'Draw') }}
                   </div>
