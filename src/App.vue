@@ -107,6 +107,11 @@ store.$onAction(({ name, after, args }) => {
           removeTrailingSlash(`/${store.language}${withoutLangPath}`)
         );
       }
+      if (router.currentRoute.value.name === 'setup-board') {
+        setTimeout(() => {
+          location.reload()
+        })
+      }
     }
   });
 });

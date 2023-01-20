@@ -117,7 +117,6 @@ const i18n = useI18n();
 
 function setLanguage(lang: string) {
   store.setLanguage(i18n, lang);
-  location.reload()
 }
 </script>
 
