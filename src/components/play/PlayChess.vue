@@ -49,12 +49,14 @@
                 />
                 <q-btn
                   :icon="matUndo"
+                  flat
                   @click="undo"
                   :disable="firstTurn || aiTurn"
                   style="transition-duration: 0.5s; transition-delay: 0.2s"
                 />
                 <q-btn
                   :icon="matRedo"
+                  flat
                   @click="redo"
                   :disable="lastTurn || aiTurn"
                   style="transition-duration: 0.5s; transition-delay: 0.2s"
