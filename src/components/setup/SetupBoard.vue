@@ -1,6 +1,6 @@
 <template>
   <div
-    class="row-md column-sm flex-1"
+    class="row-md column-sm column-xs flex-1"
     style="max-height: 100%; overflow: hidden"
   >
     <div class="col-3 q-pt-lg xs-hide sm-hide"></div>
@@ -18,7 +18,7 @@
       </div>
     </div>
     <div
-      class="col-3 q-pt-md-lg q-pt-sm-xs q-gutter-sm column-md row-sm row-xs items-center justify-md-start justify-sm-center justify-xs-center"
+      class="col-md-3 q-pt-md-lg q-pt-sm-xs q-gutter-sm column-md row-sm row-xs items-center justify-md-start justify-sm-center justify-xs-center"
     >
       <q-btn color="primary" @click="reset" :disable="disabled">{{
         $t('Reset')
