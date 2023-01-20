@@ -34,7 +34,7 @@
       }}</q-btn>
       <div class="row items-center">
         <q-toggle v-model="blackToMove" />
-        <span>{{ blackToMove ? 'Black to move' : 'White to move' }}</span>
+        <span>{{ blackToMove ? t('Black to move') : t('White to move') }}</span>
       </div>
     </div>
   </div>
