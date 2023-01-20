@@ -1849,7 +1849,7 @@ export function constructor(containerElOrString, config) {
         touchstartSparePiece
       );
       $window
-        .on('touchmove', throttledTouchmoveWindow)
+        .on('touchmove', throttledTouchmoveWindow, {passive: false})
         .on('touchend', touchendWindow);
     }
   }
