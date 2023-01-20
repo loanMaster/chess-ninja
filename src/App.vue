@@ -109,8 +109,8 @@ store.$onAction(({ name, after, args }) => {
       }
       if (router.currentRoute.value.name === 'setup-board') {
         setTimeout(() => {
-          location.reload()
-        })
+          location.reload();
+        });
       }
     }
   });

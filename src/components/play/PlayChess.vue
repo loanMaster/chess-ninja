@@ -65,10 +65,22 @@
                   max-width: 100%;
                   max-height: 100%;
                   margin: auto;
+                  position: relative;
                   overflow: hidden;
                 "
               >
                 <ChessBoard :pieces-visible="piecesVisible || isFinished" />
+                <q-icon
+                  :name="matPanToolAlt"
+                  color="red"
+                  class="text-h1 instructions no-pointer-events"
+                  :style="{ display: neverPlayed ? 'block' : 'none' }"
+                  style="
+                    transition-duration: 1s;
+                    opacity: 1;
+                    position: absolute;
+                  "
+                />s
                 <div
                   class="absolute-full no-pointer-events column justify-center items-center q-mx-auto"
                   style="aspect-ratio: 1; max-height: 100%; max-width: 100%"
@@ -101,19 +113,12 @@
         <GameControls />
       </div>
     </div>
-    <div
-      ref="touchIcon"
-      style="position: fixed; transition-duration: 1s; opacity: 0"
-      class="no-pointer-events"
-    >
-      <q-icon :name="matTouchApp" color="red" class="text-h1" />
-    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import {
-  matTouchApp,
+  matPanToolAlt,
   matVisibility,
   matVisibilityOff,
 } from '@quasar/extras/material-icons';
@@ -129,7 +134,6 @@ import { useRoute } from 'vue-router';
 
 const tab = ref('chess-board');
 const route = useRoute();
-const touchIcon = ref();
 let timeout: any;
 
 onMounted(() => {
@@ -143,12 +147,11 @@ onMounted(() => {
     }
   });
   useChessGameStore().$onAction(({ name }) => {
-    if (name === 'playerMove') {
+    if (name === 'playerMove' && useAppStore().neverPlayed) {
       madeFirstMode();
     }
   });
   useChessGameStore().start();
-  showInstructions();
 });
 
 onBeforeUnmount(() => {
@@ -157,60 +160,6 @@ onBeforeUnmount(() => {
   }
   useChessGameStore().stopGame();
 });
-
-async function showInstructions() {
-  const animate = async () => {
-    const e2 = document.querySelector('.square-e2')!;
-    const e4 = document.querySelector('.square-e4')!;
-    if (e2 && e4 && touchIcon.value && e2.getBoundingClientRect().x > 0) {
-      if (touchIcon.value) {
-        touchIcon.value.style.setProperty('transition-duration', '0s');
-        touchIcon.value.style.setProperty('opacity', 0);
-        touchIcon.value.style.setProperty(
-          'left',
-          e2.getBoundingClientRect().x + 'px'
-        );
-        touchIcon.value.style.setProperty(
-          'top',
-          e2.getBoundingClientRect().y + 'px'
-        );
-        touchIcon.value.style.setProperty('scale', '1.2');
-      }
-      await new Promise((resolve) => setTimeout(resolve, 100));
-      if (touchIcon.value) {
-        touchIcon.value.style.setProperty('transition-duration', '1s');
-        touchIcon.value.style.setProperty('opacity', 1);
-      }
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      if (touchIcon.value) {
-        touchIcon.value.style.setProperty('scale', '1');
-      }
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      if (touchIcon.value) {
-        touchIcon.value.style.setProperty(
-          'top',
-          e4.getBoundingClientRect().y + 'px'
-        );
-      }
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      if (touchIcon.value) {
-        touchIcon.value.style.setProperty('opacity', 0);
-      }
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-    }
-  };
-  const createTimer = () => {
-    timeout = setTimeout(async () => {
-      if (useAppStore().neverPlayed) {
-        await animate();
-      }
-      if (useAppStore().neverPlayed) {
-        createTimer();
-      }
-    });
-  };
-  createTimer();
-}
 
 const piecesVisible = computed(() => {
   return useChessBoardStore().piecesVisible;
@@ -223,9 +172,6 @@ function togglePiecesVisibility() {
 }
 
 function madeFirstMode() {
-  if (touchIcon.value) {
-    touchIcon.value.style.setProperty('display', 'none');
-  }
   useAppStore().playerStartedPlaying();
 }
 
@@ -238,10 +184,41 @@ const isCheckmate = computed(() => {
 const aiTurn = computed(() => {
   return !useChessGameStore().playersTurn;
 });
+
+const neverPlayed = computed(() => {
+  return useAppStore().neverPlayed;
+});
 </script>
 
 <style>
 .q-tabs__content {
   flex-wrap: wrap !important;
+}
+
+@keyframes instructions {
+  0% {
+    top: 77%;
+    opacity: 0;
+  }
+  25% {
+    top: 77%;
+    opacity: 1;
+  }
+  75% {
+    top: 52%;
+    opacity: 1;
+  }
+  100% {
+    top: 52%;
+    opacity: 0;
+  }
+}
+
+.instructions {
+  top: 75%;
+  left: 50%;
+  animation-name: instructions;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
 }
 </style>
