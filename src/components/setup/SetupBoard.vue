@@ -1,42 +1,40 @@
 <template>
-  <div class="column flex-1">
-    <div
-      class="row-md column-sm flex-1"
-      style="max-height: 100%; overflow: hidden"
-    >
-      <div class="col-3 q-pt-lg xs-hide sm-hide"></div>
-      <div class="flex-1 q-my-md" style="max-height: 100%">
-        <div
-          class="bg-secondary"
-          style="
-            aspect-ratio: 783/1000;
-            max-width: 100%;
-            max-height: 100%;
-            margin: auto;
-          "
-        >
-          <div class="g-board q-mx-auto"></div>
-        </div>
-      </div>
+  <div
+    class="row-md column-sm flex-1"
+    style="max-height: 100%; overflow: hidden"
+  >
+    <div class="col-3 q-pt-lg xs-hide sm-hide"></div>
+    <div class="flex-1 q-my-md" style="max-height: 100%">
       <div
-        class="col-3 q-pt-md-lg q-pt-sm-xs q-gutter-sm column-md row-sm row-xs items-center justify-md-start justify-sm-center justify-xs-center"
+        class="bg-secondary"
+        style="
+          aspect-ratio: 783/1000;
+          max-width: 100%;
+          max-height: 100%;
+          margin: auto;
+        "
       >
-        <q-btn color="primary" @click="reset" :disable="disabled">{{
-          $t('Reset')
-        }}</q-btn>
-        <q-btn color="primary" @click="clear" :disable="disabled">{{
-          $t('Clear')
-        }}</q-btn>
-        <q-btn color="primary" @click="playAsWhite" :disable="disabled">{{
-          $t('Play as white')
-        }}</q-btn>
-        <q-btn color="primary" @click="playAsBlack" :disable="disabled">{{
-          $t('Play as black')
-        }}</q-btn>
-        <div class="row items-center">
-          <q-toggle v-model="blackToMove" />
-          <span>{{ blackToMove ? 'Black to move' : 'White to move' }}</span>
-        </div>
+        <div class="g-board q-mx-auto"></div>
+      </div>
+    </div>
+    <div
+      class="col-3 q-pt-md-lg q-pt-sm-xs q-gutter-sm column-md row-sm row-xs items-center justify-md-start justify-sm-center justify-xs-center"
+    >
+      <q-btn color="primary" @click="reset" :disable="disabled">{{
+        $t('Reset')
+      }}</q-btn>
+      <q-btn color="primary" @click="clear" :disable="disabled">{{
+        $t('Clear')
+      }}</q-btn>
+      <q-btn color="primary" @click="playAsWhite" :disable="disabled">{{
+        $t('Play as white')
+      }}</q-btn>
+      <q-btn color="primary" @click="playAsBlack" :disable="disabled">{{
+        $t('Play as black')
+      }}</q-btn>
+      <div class="row items-center">
+        <q-toggle v-model="blackToMove" />
+        <span>{{ blackToMove ? 'Black to move' : 'White to move' }}</span>
       </div>
     </div>
   </div>

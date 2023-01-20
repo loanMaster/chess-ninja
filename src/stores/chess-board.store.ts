@@ -24,7 +24,6 @@ export const useChessBoardStore = defineStore('chessboard', {
 
 useChessGameStore().$onAction(({ name }) => {
   if (name === 'start') {
-    useChessBoardStore().piecesVisible = false;
     if (useChessBoardStore().orientation !== useChessGameStore().playerColor) {
       useChessBoardStore().rotateBoard();
     }

@@ -132,7 +132,7 @@ function getStars(exercise: string) {
 }
 .body--dark {
   .bg-exercise {
-    background-color: $pink-10;
+    background-color: $blue-grey-8;
   }
 }
 

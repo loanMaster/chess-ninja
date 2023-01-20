@@ -2,15 +2,15 @@
   <div class="column flex-1">
     <div class="row flex-1" style="max-height: 100%; overflow: hidden">
       <div
-        class="col-3 q-pb-lg sm-hide xs-hide"
+        class="col-2 q-pb-sm sm-hide xs-hide"
         style="max-height: 100%; overflow-y: hidden"
       >
-        <q-card class="q-px-md q-ma-sm" style="height: 100%">
+        <q-card class="q-px-sm q-ma-sm" style="height: 100%">
           <MoveHistory />
         </q-card>
       </div>
       <div
-        class="col-md-6 col-sm-12 column justify-start align-start"
+        class="col-md-7 col-sm-12 column justify-start align-start"
         style="max-height: 100%; max-width: 100%"
       >
         <q-tabs v-model="tab" style="flex-wrap: wrap">
@@ -27,18 +27,10 @@
             class="md-hide lg-hide xl-hide xxl-hide"
           />
         </q-tabs>
-        <q-tab-panels v-model="tab" animated class="flex-1 column">
-          <q-tab-panel name="chess-board" class="column flex-1">
-            <div class="row items-center justify-between">
-              <q-spinner-hourglass
-                :style="{
-                  opacity: aiTurn && !isFinished ? 1 : 0,
-                  'transition-delay': aiTurn ? '0.75s' : '0s',
-                }"
-                color="gray"
-                style="transition-duration: 0.5s; transition-property: opacity"
-                size="2em"
-              />
+        <q-tab-panels v-model="tab" animated :keep-alive="true" class="flex-1 column">
+          <q-tab-panel name="chess-board" class="column flex-1 q-py-xs q-px-xs-xs q-px-sm-xs overflow-hidden">
+            <div class="row items-center justify-between overflow-hidden">
+              <div/>
               <div>
                 <q-toggle
                   :model-value="piecesVisible"
@@ -48,25 +40,35 @@
                   :unchecked-icon="matVisibilityOff"
                 />{{ $t('Chess pieces visible') }}
               </div>
+              <q-spinner-hourglass
+                :style="{
+                  opacity: aiTurn && !isFinished ? 1 : 0,
+                  'transition-delay': aiTurn ? '0.75s' : '0s',
+                }"
+                color="gray"
+                style="transition-duration: 0.5s; transition-property: opacity"
+                size="2em"
+              />
             </div>
-            <div class="flex-1 relative-position">
+            <div class="flex-1 relative-position overflow-hidden">
               <div
                 style="
                   aspect-ratio: 1;
                   max-width: 100%;
                   max-height: 100%;
                   margin: auto;
+                  overflow: hidden;
                 "
               >
-                <ChessBoard :pieces-visible="piecesVisible" />
+                <ChessBoard :pieces-visible="piecesVisible || isFinished" />
                 <div
                   class="absolute-full no-pointer-events column justify-center items-center q-mx-auto"
-                  style="aspect-ratio: 1; height: 100%"
+                  style="aspect-ratio: 1; max-height: 100%; max-width: 100%"
                 >
                   <div
                     v-if="isFinished"
                     class="text-h4 bg-secondary q-pa-md non-selectable"
-                    style="opacity: 0.7"
+                    style="opacity: 0.7;"
                   >
                     {{ $t(isCheckmate ? 'Checkmate' : 'Draw') }}
                   </div>
@@ -128,9 +130,6 @@ onMounted(() => {
   useChessGameStore().$subscribe(() => {
     if (useChessGameStore().position.isFinished) {
       tab.value = 'chess-board';
-      if (!useChessBoardStore().piecesVisible) {
-        togglePiecesVisibility();
-      }
     }
   });
   useChessGameStore().$onAction(({ name }) => {

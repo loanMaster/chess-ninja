@@ -1,6 +1,6 @@
 <template>
   <div
-    class="q-mx-lg text-h6 scroll-y"
+    class="q-mx-sm text-h6 scroll-y"
     data="history"
     style="height: 100%; overflow-y: auto"
   >
@@ -8,7 +8,6 @@
     <div
       v-for="(move, idx) in history"
       :key="idx"
-      class="row"
       :class="isNavigatingThroughHistory && isCurrentMove(idx) ? 'bg-red' : ''"
     >
       {{ idx + 1 }}.

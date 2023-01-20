@@ -76,7 +76,8 @@
 }
 
 .g-board img {
-  transition: opacity 1s;
+  transition-duration: 0.5s;
+  transition-property: opacity;
 }
 
 .g-hide-notations [class^='notation'] {
