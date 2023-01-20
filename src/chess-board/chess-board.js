@@ -1662,6 +1662,7 @@ export function constructor(containerElOrString, config) {
   function touchstartSquare(e) {
     // do nothing if we're not draggable
     if (!config.draggable) return;
+    e.preventDefault()
 
     // do nothing if there is no piece on this square
     const square = $(this).attr('data-square');
@@ -1689,7 +1690,7 @@ export function constructor(containerElOrString, config) {
   function touchstartSparePiece(e) {
     // do nothing if sparePieces is not enabled
     if (!config.sparePieces) return;
-
+    e.preventDefault()
     const piece = $(this).attr('data-piece');
 
     e = e.originalEvent;
@@ -1842,17 +1843,24 @@ export function constructor(containerElOrString, config) {
 
     // touch drag pieces
     if (isTouchDevice()) {
+      $.event.special.touchstart = {
+        setup: function( _, ns, handle ){
+          this.addEventListener("touchstart", handle, { passive: false });
+        }
+      };
+      $.event.special.touchmove = {
+        setup: function( _, ns, handle ){
+          this.addEventListener("touchmove", handle, { passive: false });
+        }
+      };
+
       $board.on('touchstart', '.' + CSS.square, touchstartSquare);
       $container.on(
         'touchstart',
         '.' + CSS.sparePieces + ' .' + CSS.piece,
         touchstartSparePiece
       );
-      $.event.special.touchstart = {
-        setup: function( _, ns, handle ){
-          this.addEventListener("touchmove", handle, { passive: false });
-        }
-      };
+
       $window
         .on('touchmove', throttledTouchmoveWindow)
         .on('touchend', touchendWindow);
