@@ -38,7 +38,7 @@
             class="column flex-1 q-py-xs q-px-xs-xs q-px-sm-xs overflow-hidden"
           >
             <div class="row items-center justify-between overflow-hidden">
-              <div />
+              <div/>
               <div>
                 <q-toggle
                   :model-value="piecesVisible"
@@ -46,7 +46,9 @@
                   :checked-icon="matVisibility"
                   color="secondary"
                   :unchecked-icon="matVisibilityOff"
-                />{{ $t('Chess pieces visible') }}
+                />
+                <q-btn :icon="matUndo" @click="undo" :disable="firstTurn || aiTurn" style="transition-duration: 0.5s; transition-delay: 0.2s"/>
+                <q-btn :icon="matRedo" @click="redo" :disable="lastTurn || aiTurn" style="transition-duration: 0.5s; transition-delay: 0.2s"/>
               </div>
               <q-spinner-hourglass
                 :style="{
@@ -121,6 +123,8 @@ import {
   matPanToolAlt,
   matVisibility,
   matVisibilityOff,
+  matUndo,
+  matRedo,
 } from '@quasar/extras/material-icons';
 import MoveHistory from './MoveHistory.vue';
 import SelectMoveButtons from './SelectMoveButtons.vue';
@@ -165,6 +169,14 @@ const piecesVisible = computed(() => {
   return useChessBoardStore().piecesVisible;
 });
 
+function undo() {
+  useChessGameStore().historyBack();
+}
+
+function redo() {
+  useChessGameStore().historyForward();
+}
+
 function togglePiecesVisibility() {
   useChessBoardStore().$patch({
     piecesVisible: !useChessBoardStore().piecesVisible,
@@ -184,7 +196,12 @@ const isCheckmate = computed(() => {
 const aiTurn = computed(() => {
   return !useChessGameStore().playersTurn;
 });
-
+const firstTurn = computed(() => {
+  return useChessGameStore().position.indexInHistory < 1
+})
+const lastTurn = computed(() => {
+  return useChessGameStore().position.indexInHistory === useChessGameStore().position.moveHistory.length - 1
+})
 const neverPlayed = computed(() => {
   return useAppStore().neverPlayed;
 });

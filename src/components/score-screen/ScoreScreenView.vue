@@ -22,10 +22,13 @@
             <span>{{ $t('Time required') }}</span>
             <span
               >{{
-                formatDuration(store.exercise.duration / 1000, store.language)
+                formatDuration(store.exercise.duration / 1000, language)
               }}
               s</span
             >
+          </div>
+          <div class="row justify-center" v-if="store.exercise.totalStrikeCount === 0 && store.exercise.rating < 5">
+            <span>{{ $t('Beat _DURATION_s to get one more star', { duration : durationForNextStar }) }}</span>
           </div>
         </div>
       </div>
@@ -46,6 +49,8 @@ import { useAppStore } from 'src/stores/app-store';
 import { useRouter } from 'vue-router';
 import { useExerciseStore } from 'stores/exercise.store';
 import { formatTime } from 'src/util/format-number';
+import { computed } from 'vue';
+import {exerciseStats} from "src/util/exercises.const";
 
 const store = useExerciseStore();
 const router = useRouter();
@@ -63,6 +68,16 @@ function playAgain() {
 function formatDuration(num: number, lang: string) {
   return formatTime(num, lang);
 }
+
+const durationForNextStar = computed(() => {
+  const duration = store.exercise.rating === 3 ? exerciseStats[store.exercise.nameOfTheGame].threeStarRating
+    : exerciseStats[store.exercise.nameOfTheGame].fourStarRating
+  return formatDuration(duration / 1000, useAppStore().language)
+})
+
+const language = computed(() => {
+  return useAppStore().language
+})
 </script>
 
 <style scoped>

@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia';
+import {exerciseStats} from "src/util/exercises.const";
 
 export interface Ratings {
   [key: string]: number;
@@ -57,7 +58,7 @@ const saveRatings = (ratings: Ratings): void => {
   localStorage.setItem('ratings', JSON.stringify(ratings));
 };
 
-const calculateRating = (strikes: number, duration: number) => {
+const calculateRating = (exerciseName: string, strikes: number, duration: number) => {
   if (strikes > 3) {
     return 0;
   }
@@ -67,10 +68,10 @@ const calculateRating = (strikes: number, duration: number) => {
   if (strikes > 0) {
     return 2;
   }
-  if (duration > 30000) {
+  if (duration > exerciseStats[exerciseName].threeStarRating) {
     return 3;
   }
-  if (duration > 20000) {
+  if (duration > exerciseStats[exerciseName].fourStarRating) {
     return 4;
   }
   return 5;
@@ -109,6 +110,7 @@ export const useExerciseStore = defineStore('exercise', {
       this.exercise.duration = Date.now() - this.exercise.beginTimeStamp;
       this.exercise.state = 'finished';
       this.exercise.rating = calculateRating(
+        this.exercise.nameOfTheGame,
         this.exercise.totalStrikeCount,
         this.exercise.duration
       );

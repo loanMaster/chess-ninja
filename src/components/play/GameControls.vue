@@ -19,13 +19,11 @@
         id="aiLevel"
       />
     </div>
-    <HistoryControl />
     <q-btn @click="flipBoard" color="primary">{{ $t('Rotate board') }}</q-btn>
   </div>
 </template>
 
 <script lang="ts" setup>
-import HistoryControl from './HistoryControl.vue';
 import { useChessGameStore } from 'stores/chess-game.store';
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
