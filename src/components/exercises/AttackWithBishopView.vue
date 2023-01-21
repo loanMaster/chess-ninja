@@ -13,7 +13,7 @@
       </div>
       <div class="row q-gutter-md max-width-xs q-mt-md justify-center">
         <div v-for="move in moves" :key="move" class="text-h5">
-          <q-btn push color="primary" @click="select(move, $event)">{{
+          <q-btn push color="primary" @click="select(move, $event)" no-caps>{{
             move
           }}</q-btn>
         </div>
