@@ -2,7 +2,7 @@ export default {
   APP_NAME: 'ChessNinja',
   'Exercise finished': 'Übung beendet',
   'Correct:': 'Richtig:',
-  'Click to continue': 'Klicken um weiter zu machen',
+  'Click to continue': 'Klicken, um weiter zu machen',
   Correct: 'Richtig',
   'Time required': 'Benötigte Zeit',
   Mistakes: 'Fehler',
