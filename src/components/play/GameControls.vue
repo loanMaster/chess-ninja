@@ -21,7 +21,7 @@
     </div>
     <q-btn @click="flipBoard" color="primary">{{ $t('Rotate board') }}</q-btn>
     <div class="q-mt-md">
-      {{ t('Chess pieces notation:') }}chess-game.ts
+      {{ t('Chess pieces notation:') }}
       {{ showPieceSymbols ? t('Symbols') : t('Letters') }}
     </div>
     <q-toggle
