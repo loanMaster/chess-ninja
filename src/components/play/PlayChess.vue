@@ -31,7 +31,7 @@
           v-model="tab"
           animated
           :keep-alive="true"
-          class="flex-1 column"
+          class="flex-1 column shadow-2"
         >
           <q-tab-panel
             name="chess-board"
