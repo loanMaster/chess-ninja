@@ -7,6 +7,7 @@ export interface IAppState {
   _themePreference: string;
   _orientation: string;
   _neverPlayed: boolean;
+  _showChessPieceSymbols: boolean;
 }
 
 const getBrowserLanguage = (): string => {
@@ -29,6 +30,8 @@ export const useAppStore = defineStore('main', {
         ? 'portrait'
         : 'landscape',
       _neverPlayed: localStorage.getItem('neverPlayed') !== 'false',
+      _showChessPieceSymbols:
+        localStorage.getItem('showChessPieceSymbols') === 'true',
     } as IAppState;
   },
   getters: {
@@ -44,8 +47,15 @@ export const useAppStore = defineStore('main', {
     neverPlayed(): boolean {
       return this._neverPlayed;
     },
+    showChessPieceSymbols(): boolean {
+      return this._showChessPieceSymbols;
+    },
   },
   actions: {
+    setShowChessPieceSymbols(value: boolean) {
+      this._showChessPieceSymbols = value;
+      localStorage.setItem('showChessPieceSymbols', String(value));
+    },
     playerStartedPlaying() {
       if (this._neverPlayed) {
         this._neverPlayed = false;

@@ -20,6 +20,16 @@
       />
     </div>
     <q-btn @click="flipBoard" color="primary">{{ $t('Rotate board') }}</q-btn>
+    <div class="q-mt-md">
+      {{ t('Chess pieces notation:') }}chess-game.ts
+      {{ showPieceSymbols ? t('Symbols') : t('Letters') }}
+    </div>
+    <q-toggle
+      style="margin-top: 0; padding-top: 0"
+      :model-value="showPieceSymbols"
+      @update:model-value="toggleShowPieceSymbols"
+      color="secondary"
+    ></q-toggle>
   </div>
 </template>
 
@@ -29,6 +39,7 @@ import { computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAppStore } from 'stores/app-store';
 import { useChessBoardStore } from 'stores/chess-board.store';
+import { useI18n } from 'vue-i18n';
 
 defineProps({
   showSetup: { Boolean, default: true },
@@ -36,6 +47,7 @@ defineProps({
 });
 
 const router = useRouter();
+const { t } = useI18n();
 
 function startAsBlack() {
   start('black');
@@ -66,5 +78,13 @@ function setupBoard() {
 
 function flipBoard() {
   useChessBoardStore().rotateBoard();
+}
+
+const showPieceSymbols = computed(() => {
+  return useAppStore().showChessPieceSymbols;
+});
+
+function toggleShowPieceSymbols() {
+  useAppStore().setShowChessPieceSymbols(!useAppStore().showChessPieceSymbols);
 }
 </script>

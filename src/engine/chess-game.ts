@@ -1,6 +1,5 @@
 import * as jsChessEngine from 'js-chess-engine';
 import { ChessEngine } from './chess-engine';
-import { ChessUtils } from 'src/util/chess-utils';
 
 export interface ChessMoveResult {
   isValid: boolean;
@@ -196,7 +195,7 @@ export class ChessGame {
       return `${from}-${to}`;
     }
     const capture = pieces[to] ? 'x' : '';
-    const piecesShortcut = ChessUtils.getSymbol(pieces[from]); // pieces[from].toLowerCase() === 'p' ? '' : pieces[from].toUpperCase()
+    const piecesShortcut = pieces[from].toUpperCase();
     let altPieceIndicator = '';
     if (alternativePieces.length === 1) {
       if (alternativePieces[0].from[0] === from[0]) {

@@ -13,14 +13,14 @@
       {{ idx + 1 }}.
       {{
         move.white
-          ? `${move.white.description}${
+          ? `${updateDescription(move.white.description)}${
               move.white.checkmate ? '#' : move.white.check ? '!' : ''
             }`
           : ''
       }}
       {{
         move.black
-          ? `${move.black.description}${
+          ? `${updateDescription(move.black.description)}${
               move.black.checkmate ? '#' : move.black.check ? '!' : ''
             }`
           : ''
@@ -33,6 +33,10 @@
 import { computed, onMounted } from 'vue';
 import { HistoryMove } from '/src/engine/chess-game';
 import { useChessGameStore } from 'stores/chess-game.store';
+import { useAppStore } from 'stores/app-store';
+import { ChessUtils } from 'src/util/chess-utils';
+
+const appStore = useAppStore();
 
 const moveHistory = computed(() => {
   return useChessGameStore().position.moveHistory;
@@ -58,6 +62,14 @@ const history = computed(() => {
   }
   return pairs;
 });
+
+function updateDescription(desc: string) {
+  if (appStore.showChessPieceSymbols) {
+    return ChessUtils.getSymbol(desc[0]) + desc.substring(1);
+  } else {
+    return desc.replace('p', '').replace('P', '');
+  }
+}
 
 onMounted(() => {
   useChessGameStore().$onAction(({ name, after }) => {

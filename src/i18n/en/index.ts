@@ -76,4 +76,7 @@ export default {
   'ChessNinja is a website that teaches you to play chess blind.': '_',
   'Beat _DURATION_s to get one more star':
     'Beat {duration}s to get one more star',
+  'Chess pieces notation:': '_',
+  symbols: '_',
+  letters: '_',
 };
