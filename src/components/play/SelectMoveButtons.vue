@@ -6,7 +6,7 @@
     >
       <div>
         <div class="text-h5" v-if="playersTurn">
-          {{ lastOpponentMove.description
+          {{ lastOpponentMoveDescription
           }}{{ checkMate ? '#' : inCheck ? '!' : '' }}
         </div>
         <div class="text-h5" v-if="!playersTurn && isFinished">
@@ -95,15 +95,16 @@ onMounted(() => {
   updateMoves();
 });
 
-const lastOpponentMove = computed(() => {
+const lastOpponentMoveDescription = computed(() => {
   return (
-    useChessGameStore().lastOpponentMove || {
-      description: t('Make a move'),
-    }
+    updateDescription(useChessGameStore().lastOpponentMove?.description) || t('Make a move')
   );
 });
 
 function updateDescription(desc: string) {
+  if (!desc) {
+    return desc
+  }
   if (appStore.showChessPieceSymbols) {
     return (
       (desc[0].toLowerCase() === 'p' ? '' : ChessUtils.getSymbol(desc[0])) +
