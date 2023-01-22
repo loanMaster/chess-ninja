@@ -5,7 +5,6 @@ export interface IAppState {
   machineId: string;
   _language: string;
   _themePreference: string;
-  _orientation: string;
   _neverPlayed: boolean;
   _showChessPieceSymbols: boolean;
 }
@@ -26,18 +25,12 @@ export const useAppStore = defineStore('main', {
     return {
       _language: localStorage.getItem('language') || getBrowserLanguage(),
       _themePreference: localStorage.getItem('themePreference') || 'dark',
-      _orientation: window.matchMedia('(orientation: portrait)').matches
-        ? 'portrait'
-        : 'landscape',
       _neverPlayed: localStorage.getItem('neverPlayed') !== 'false',
       _showChessPieceSymbols:
         localStorage.getItem('showChessPieceSymbols') === 'true',
     } as IAppState;
   },
   getters: {
-    orientation(): string {
-      return this._orientation;
-    },
     themePreference(): string {
       return this._themePreference;
     },
@@ -68,19 +61,9 @@ export const useAppStore = defineStore('main', {
       this._language = lang;
       localStorage.setItem('language', lang);
     },
-    orientationChange(angle: number) {
-      this._orientation =
-        angle === 0 || angle === 180 ? 'portrait' : 'landscape';
-    },
     setThemePreference(theme: 'light' | 'dark') {
       this._themePreference = theme;
       localStorage.setItem('themePreference', theme);
     },
   },
-});
-
-window.addEventListener('orientationchange', (event: any) => {
-  setTimeout(() => {
-    useAppStore().orientationChange(event.target.screen.orientation.angle);
-  });
 });
