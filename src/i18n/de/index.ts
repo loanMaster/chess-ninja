@@ -85,5 +85,9 @@ export default {
   'Chess pieces notation:': 'Figurennotation:',
   Symbols: 'Symbole',
   Letters: 'Buchstaben',
-  'Contact:': 'Kontakt:'
+  'Contact:': 'Kontakt:',
+  'https://freeonlinesurveys.com/s/X4gSL5Fu':
+    'https://freeonlinesurveys.com/s/hE9sh8sl',
+  'Please take the following survey to improve ChessNinja:':
+    'Bitte nimm an folgender Umfrage Teil, um ChessNinja weiter zu verbessern:',
 };

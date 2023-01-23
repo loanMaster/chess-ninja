@@ -79,5 +79,7 @@ export default {
   'Chess pieces notation:': '_',
   symbols: '_',
   letters: '_',
-  'Contact:': '_'
+  'Contact:': '_',
+  'https://freeonlinesurveys.com/s/X4gSL5Fu': '_',
+  'Please take the following survey to improve ChessNinja:': '_',
 };

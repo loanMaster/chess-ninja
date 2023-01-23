@@ -47,6 +47,18 @@
         </div>
       </q-card-section>
     </q-card>
+    <div class="q-mx-auto text-h6 text-center q-mt-xl">
+      <div class="">
+        {{ $t('Please take the following survey to improve ChessNinja:') }}
+      </div>
+      <a
+        class="text-color-default"
+        style="word-break: break-all"
+        target="_blank"
+        :href="$t('https://freeonlinesurveys.com/s/X4gSL5Fu')"
+        >{{ $t('https://freeonlinesurveys.com/s/X4gSL5Fu') }}</a
+      >
+    </div>
   </div>
 </template>
 

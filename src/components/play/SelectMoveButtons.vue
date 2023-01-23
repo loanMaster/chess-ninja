@@ -97,13 +97,14 @@ onMounted(() => {
 
 const lastOpponentMoveDescription = computed(() => {
   return (
-    updateDescription(useChessGameStore().lastOpponentMove?.description) || t('Make a move')
+    updateDescription(useChessGameStore().lastOpponentMove?.description) ||
+    t('Make a move')
   );
 });
 
 function updateDescription(desc: string) {
   if (!desc) {
-    return desc
+    return desc;
   }
   if (appStore.showChessPieceSymbols) {
     return (
