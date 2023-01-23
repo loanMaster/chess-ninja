@@ -1,5 +1,5 @@
 <template>
-  <div class="animated-bg"></div>
+  <div class="animated-bg" style="pointer-events: none"></div>
 </template>
 
 <style lang="scss" scoped>

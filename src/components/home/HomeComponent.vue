@@ -77,6 +77,9 @@
         </div>
       </div>
     </q-card>
+    <div class="q-mx-auto q-my-lg">
+      <div style="user-select: text">{{ $t('Contact:') }} <a href="mailto:molari.webmaster@gmail.com" style="user-select: text;">molari.webmaster@gmail.com</a></div>
+    </div>
   </div>
 </template>
 

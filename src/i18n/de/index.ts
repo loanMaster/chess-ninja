@@ -85,4 +85,5 @@ export default {
   'Chess pieces notation:': 'Figurennotation:',
   Symbols: 'Symbole',
   Letters: 'Buchstaben',
+  'Contact:': 'Kontakt:'
 };
