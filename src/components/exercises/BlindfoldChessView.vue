@@ -16,7 +16,7 @@
       >
         <q-card
           class="q-mx-sm q-mt-sm q-pt-md-lg q-pt-sm-sm"
-          style="height: 100%"
+          style="height: 100%; overflow: auto"
         >
           <div class="text-center" v-if="!hasStarted">
             <div class="text-h5">
