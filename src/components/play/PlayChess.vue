@@ -73,39 +73,24 @@
               />
             </div>
             <div class="flex-1 relative-position overflow-hidden">
+              <ChessBoard :pieces-visible="piecesVisible || isFinished" />
+              <q-icon
+                :name="matPanToolAlt"
+                color="red"
+                class="text-h1 instructions no-pointer-events"
+                :style="{ display: neverPlayed ? 'block' : 'none' }"
+                style="transition-duration: 1s; opacity: 1; position: absolute"
+              />
               <div
-                style="
-                  aspect-ratio: 1;
-                  max-width: 100%;
-                  max-height: 100%;
-                  margin: auto;
-                  position: relative;
-                  overflow: hidden;
-                "
+                class="absolute-full no-pointer-events column justify-center items-center q-mx-auto"
+                style="aspect-ratio: 1; max-height: 100%; max-width: 100%"
               >
-                <ChessBoard :pieces-visible="piecesVisible || isFinished" />
-                <q-icon
-                  :name="matPanToolAlt"
-                  color="red"
-                  class="text-h1 instructions no-pointer-events"
-                  :style="{ display: neverPlayed ? 'block' : 'none' }"
-                  style="
-                    transition-duration: 1s;
-                    opacity: 1;
-                    position: absolute;
-                  "
-                />s
                 <div
-                  class="absolute-full no-pointer-events column justify-center items-center q-mx-auto"
-                  style="aspect-ratio: 1; max-height: 100%; max-width: 100%"
+                  v-if="isFinished"
+                  class="text-h4 bg-secondary q-pa-md non-selectable"
+                  style="opacity: 0.7"
                 >
-                  <div
-                    v-if="isFinished"
-                    class="text-h4 bg-secondary q-pa-md non-selectable"
-                    style="opacity: 0.7"
-                  >
-                    {{ $t(isCheckmate ? 'Checkmate' : 'Draw') }}
-                  </div>
+                  {{ $t(isCheckmate ? 'Checkmate' : 'Draw') }}
                 </div>
               </div>
             </div>

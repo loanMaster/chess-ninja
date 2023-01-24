@@ -47,7 +47,7 @@
             <div v-if="!revealed" class="flex-1" style="overflow-y: auto">
               <SelectMoveButtons />
             </div>
-            <div class="flex-1 q-my-md position-relative" v-if="revealed">
+            <div class="flex-1 q-my-md relative-position" v-if="revealed">
               <ExerciseBoard />
               <div
                 class="absolute-full no-pointer-events column justify-center items-center q-mx-auto"

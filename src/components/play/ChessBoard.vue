@@ -1,8 +1,11 @@
 <template>
-  <div
-    :class="!piecesVisible ? 'g-hide-pieces' : ''"
-    class="relative-position g-board"
-  />
+  <div ref="frame" class="absolute-full column items-center justify-center">
+    <div
+      ref="boardWrapper"
+      class="g-board relative-position"
+      :class="!piecesVisible ? 'g-hide-pieces' : ''"
+    ></div>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -12,11 +15,13 @@ import {
 } from '/src/chess-board/chess-board.interface';
 import { Move, PossibleMove } from '/src/engine/chess-game';
 import { useChessGameStore } from 'stores/chess-game.store';
-import { onActivated, onDeactivated, onMounted } from 'vue';
+import { onActivated, onDeactivated, onMounted, ref, Ref } from 'vue';
 import { useChessBoardStore } from 'stores/chess-board.store';
 import { preloadAssets } from 'src/util/preload-assets';
 
 let board: ChessBoard;
+const frame: Ref<HTMLElement> = ref() as any;
+const boardWrapper: Ref<HTMLElement> = ref() as any;
 
 defineProps({
   piecesVisible: { type: Boolean, default: true },
@@ -52,8 +57,18 @@ function createBoard(color: string, fen?: string) {
     onDragStart: () => board.removeHighlighting(),
   };
   if (document.querySelector('.g-board')) {
+    setBoardWrapperSize();
     board = new ChessBoard('.g-board', config);
     syncBoard();
+  }
+}
+
+function setBoardWrapperSize() {
+  if (frame.value && boardWrapper.value) {
+    const width = frame.value.getBoundingClientRect().width;
+    const height = frame.value.getBoundingClientRect().height;
+    boardWrapper.value.setAttribute('width', Math.min(width, height) + 'px');
+    boardWrapper.value.setAttribute('height', Math.min(width, height) + 'px');
   }
 }
 

@@ -14,7 +14,11 @@
       {{ wasCorrect ? $t('Correct') : $t('Wrong') }}
     </div>
     <div class="column items-stretch flex-1 q-pa-lg">
-      <div class="flex-1" style="max-height: 100%" v-if="showBoard">
+      <div
+        class="flex-1 relative-position"
+        style="max-height: 100%"
+        v-if="showBoard"
+      >
         <ExerciseBoard
           :class="rotate ? 'c-rotate-board' : ''"
           class="g-hide-notations"

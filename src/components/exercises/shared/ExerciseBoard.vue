@@ -1,6 +1,6 @@
 <template>
-  <div style="aspect-ratio: 1; max-width: 100%; max-height: 100%; margin: auto">
-    <div class="g-board"></div>
+  <div ref="frame" class="absolute-full column items-center justify-center">
+    <div ref="boardWrapper" class="g-board"></div>
   </div>
 </template>
 
@@ -10,11 +10,13 @@ import {
   ChessBoard,
 } from '/src/chess-board/chess-board.interface';
 import { take } from 'rxjs/operators';
-import { computed, onBeforeUnmount, onMounted } from 'vue';
+import { computed, onBeforeUnmount, onMounted, ref, Ref } from 'vue';
 import { BoardState, useExerciseStore } from 'stores/exercise.store';
 
 const emits = defineEmits(['square-clicked']);
 let board!: ChessBoard;
+const frame: Ref<HTMLElement> = ref() as any;
+const boardWrapper: Ref<HTMLElement> = ref() as any;
 
 async function createBoard() {
   const config: ChessBoardConfig = {
@@ -23,8 +25,18 @@ async function createBoard() {
       emits('square-clicked', square);
     },
   };
+  setBoardWrapperSize();
   board = new ChessBoard('.g-board', config);
   await board.initialized.pipe(take(1)).toPromise();
+}
+
+function setBoardWrapperSize() {
+  if (frame.value && boardWrapper.value) {
+    const width = frame.value.getBoundingClientRect().width;
+    const height = frame.value.getBoundingClientRect().height;
+    boardWrapper.value.setAttribute('width', Math.min(width, height) + 'px');
+    boardWrapper.value.setAttribute('height', Math.min(width, height) + 'px');
+  }
 }
 
 onMounted(async () => {
@@ -36,6 +48,9 @@ onMounted(async () => {
 });
 
 async function syncBoard() {
+  if (!board) {
+    return;
+  }
   board.clear();
   board.removeHighlighting();
   board.position(boardState.value.pieces, false);

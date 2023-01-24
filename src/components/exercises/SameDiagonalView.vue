@@ -42,7 +42,7 @@
       >
         {{ wasCorrect ? $t('Correct') : $t('Wrong') }}
       </div>
-      <div class="flex-1" style="max-height: 100%">
+      <div class="flex-1 relative-position" style="max-height: 100%">
         <ExerciseBoard />
       </div>
       <div class="column items-center">

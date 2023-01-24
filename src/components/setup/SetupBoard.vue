@@ -4,17 +4,12 @@
     style="max-height: 100%; overflow: hidden"
   >
     <div class="col-3 q-pt-lg xs-hide sm-hide"></div>
-    <div class="flex-1 q-my-md" style="max-height: 100%">
+    <div class="flex-1 q-my-md relative-position" style="max-height: 100%">
       <div
-        class="bg-secondary"
-        style="
-          aspect-ratio: 783/1000;
-          max-width: 100%;
-          max-height: 100%;
-          margin: auto;
-        "
+        ref="frame"
+        class="bg-secondary absolute-full column items-center justify-center"
       >
-        <div class="g-board q-mx-auto"></div>
+        <div ref="boardWrapper" class="g-board relative-position"></div>
       </div>
     </div>
     <div
@@ -45,6 +40,8 @@ import { useAppStore } from 'stores/app-store';
 
 let board: Ref<ChessBoard | undefined> = ref(undefined);
 const router = useRouter();
+const frame: Ref<HTMLElement> = ref() as any;
+const boardWrapper: Ref<HTMLElement> = ref() as any;
 
 onMounted(() => {
   useChessGameStore().stopGame();
@@ -53,7 +50,7 @@ onMounted(() => {
     if (useChessGameStore().position.fen) {
       board.value.position(useChessGameStore().position.fen, false);
     }
-  }, 100);
+  }, 1);
 });
 
 const disabled = computed(() => {
@@ -105,10 +102,20 @@ function reset() {
   if (board.value) {
     board.value.destroy();
   }
+  setBoardWrapperSize();
   board.value = new ChessBoard('.g-board', {
     dropOffBoard: 'trash',
     sparePieces: true,
   });
+}
+
+function setBoardWrapperSize() {
+  if (frame.value && boardWrapper.value) {
+    const width = frame.value.getBoundingClientRect().width;
+    const height = frame.value.getBoundingClientRect().height;
+    boardWrapper.value.setAttribute('width', Math.min(width, height) + 'px');
+    boardWrapper.value.setAttribute('height', Math.min(width, height) + 'px');
+  }
 }
 
 function clear() {
