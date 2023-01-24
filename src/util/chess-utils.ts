@@ -12,6 +12,14 @@ export class ChessUtils {
     return diagonalSquares.indexOf(s2) > -1;
   }
 
+  static getRandomSquares(count: number): string[] {
+    const squares: string[] = [];
+    for (let idx = 0; idx < count; idx++) {
+      squares.push(this.getOtherRandomSquare(squares));
+    }
+    return squares;
+  }
+
   static getRandomSquare(): string {
     const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
     const letter = letters[Math.floor(Math.random() * letters.length)];

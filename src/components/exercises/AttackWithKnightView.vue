@@ -9,7 +9,9 @@
         {{ $t('Attack the king with your knight') }}
       </div>
       <div class="g-large-font g-full-width q-mt-md">
-        <PieceList :pieces="pieces" />
+        <div class="text-h5 q-gutter-lg row">
+          <PieceList :pieces="pieces" />
+        </div>
       </div>
       <div class="row q-gutter-md max-width-xs q-mt-md justify-center">
         <div v-for="move in moves" :key="move" class="text-h5">
@@ -82,7 +84,6 @@ async function nextQuestion() {
   }
   knight.value = ChessUtils.getOtherRandomSquare([knight.value]);
   chessGame.createNew({ pieces: { [knight.value]: 'N' } });
-
   const knightsMoves = chessGame.moves(knight.value);
   const knightsMove =
     knightsMoves[Math.floor(Math.random() * knightsMoves.length)];

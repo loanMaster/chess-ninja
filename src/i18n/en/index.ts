@@ -30,6 +30,18 @@ export default {
     'save-the-king': {
       title: 'Save the king',
     },
+    'queen-vs-king': {
+      title: 'Queen vs king',
+    },
+    'queen-vs-knights': {
+      title: 'Queen vs knights',
+    },
+    'rook-vs-king': {
+      title: 'Rook vs king',
+    },
+    'queen-vs-rook': {
+      title: 'Queen vs rook',
+    },
   },
   play_difficulty_0: 'Easy',
   play_difficulty_1: 'Normal',
@@ -77,9 +89,20 @@ export default {
   'Beat _DURATION_s to get one more star':
     'Beat {duration}s to get one more star',
   'Chess pieces notation:': '_',
-  symbols: '_',
-  letters: '_',
+  Symbols: '_',
+  Letters: '_',
   'Contact:': '_',
   'https://freeonlinesurveys.com/s/X4gSL5Fu': '_',
   'Please take the following survey to improve ChessNinja:': '_',
+  "Checkmate the opponent's king": '_',
+  'White pieces': '_',
+  'Black pieces': '_',
+  'You play as': '_',
+  'Click here when you are ready': '_',
+  'You won!': '_',
+  'You lost': '_',
+  Scenarios: '_',
+  Exercises: '_',
+  Restart: '_',
+  'Give up': '_',
 };

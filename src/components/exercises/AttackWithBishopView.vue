@@ -9,7 +9,9 @@
         {{ $t('Attack the king with your bishop') }}
       </div>
       <div class="g-large-font g-full-width q-mt-md">
-        <PieceList :pieces="pieces" />
+        <div class="text-h5 q-gutter-lg row">
+          <PieceList :pieces="pieces" />
+        </div>
       </div>
       <div class="row q-gutter-md max-width-xs q-mt-md justify-center">
         <div v-for="move in moves" :key="move" class="text-h5">

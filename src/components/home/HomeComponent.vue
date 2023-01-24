@@ -21,7 +21,7 @@
     </div>
 
     <q-card class="exercise-block q-mt-xl" id="exercises">
-      <div class="exercise-title">{{ $t('Learn') }}</div>
+      <div class="exercise-title">{{ $t('Exercises') }}</div>
       <div class="row-sm column-xs q-col-gutter-lg q-mb-lg">
         <div v-for="exercise in exercises" :key="exercise" class="col-4 column">
           <router-link
@@ -38,6 +38,36 @@
               </q-card-section>
               <q-card-section class="text-center">
                 <StarsRating
+                  :rating="getStars(exercise)"
+                  class="text-h4 q-ml-xs"
+                />
+              </q-card-section>
+            </q-card>
+          </router-link>
+        </div>
+      </div>
+      <div class="exercise-title">{{ $t('Scenarios') }}</div>
+      <div class="row-sm column-xs q-col-gutter-lg q-mb-lg">
+        <div
+          v-for="exercise in scenarios"
+          :key="exercise"
+          class="col-3 column flex-1"
+        >
+          <router-link
+            :to="{
+              name: exercise,
+              params: { game: exercise, language: language },
+            }"
+            class="text-color-default column flex-1"
+            style="text-decoration: none"
+          >
+            <q-card class="flex-1 cursor-pointer zoom-on-hover">
+              <q-card-section class="text-bold text-center bg-exercise">
+                {{ $t(`exercises.${exercise}.title`) }}
+              </q-card-section>
+              <q-card-section class="text-center">
+                <StarsRating
+                  :max="1"
                   :rating="getStars(exercise)"
                   class="text-h4 q-ml-xs"
                 />
@@ -105,6 +135,13 @@ const exercises = ref([
   'attack-with-bishop',
   'attack-with-knight',
   'save-the-king',
+]);
+
+const scenarios = ref([
+  'queen-vs-king',
+  'rook-vs-king',
+  'queen-vs-rook',
+  'queen-vs-knights',
 ]);
 
 function scrollTo(anchor: string) {

@@ -10,7 +10,7 @@
         </q-card>
       </div>
       <div
-        class="col-lg-7 col-md-6 col-sm-12 column justify-start align-start"
+        class="col-lg-7 col-md-6 col-sm-12 col-xs-12 column justify-start align-start"
         style="max-height: 100%; max-width: 100%"
       >
         <q-tabs v-model="tab" style="flex-wrap: wrap">

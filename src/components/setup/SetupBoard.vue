@@ -32,10 +32,6 @@
       <q-btn color="primary" @click="playAsBlack" :disable="disabled">{{
         $t('Play as black')
       }}</q-btn>
-      <div class="row items-center">
-        <q-toggle v-model="blackToMove" />
-        <span>{{ blackToMove ? t('Black to move') : t('White to move') }}</span>
-      </div>
     </div>
   </div>
 </template>
@@ -46,12 +42,9 @@ import { ChessBoard } from '/src/chess-board/chess-board.interface';
 import { useChessGameStore } from 'stores/chess-game.store';
 import { useRouter } from 'vue-router';
 import { useAppStore } from 'stores/app-store';
-import { useI18n } from 'vue-i18n';
 
 let board: Ref<ChessBoard | undefined> = ref(undefined);
 const router = useRouter();
-const blackToMove = ref(false);
-const { t } = useI18n();
 
 onMounted(() => {
   useChessGameStore().stopGame();
@@ -77,7 +70,7 @@ async function playAsBlack() {
   await useChessGameStore().setupBoard({
     playerColor: 'black',
     config: {
-      turn: blackToMove.value ? 'black' : 'white',
+      turn: 'white',
       pieces: convertPieceConfiguration(board.value.getPosition()),
     },
   });
@@ -88,10 +81,11 @@ async function playAsWhite() {
   await useChessGameStore().setupBoard({
     playerColor: 'white',
     config: {
-      turn: blackToMove.value ? 'black' : 'white',
+      turn: 'white',
       pieces: convertPieceConfiguration(board.value.getPosition()),
     },
   });
+  console.log(board.value.getPosition());
   router.push({ name: 'play', params: { language: useAppStore().language } });
 }
 

@@ -13,7 +13,9 @@
         }}
       </div>
       <div class="g-large-font g-full-width q-mt-md">
-        <PieceList :pieces="pieces" />
+        <div class="text-h5 q-gutter-lg row">
+          <PieceList :pieces="pieces" />
+        </div>
       </div>
       <q-btn
         push

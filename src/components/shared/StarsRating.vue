@@ -9,7 +9,7 @@
     <q-icon
       :name="matStarBorder"
       color="amber-4"
-      v-for="val in Array.from(Array(5 - rating).keys())"
+      v-for="val in Array.from(Array(max - rating).keys())"
       :key="val"
     ></q-icon>
   </div>
@@ -17,5 +17,5 @@
 
 <script setup lang="ts">
 import { matStar, matStarBorder } from '@quasar/extras/material-icons';
-defineProps({ rating: Number });
+defineProps({ rating: Number, max: { type: Number, default: 5 } });
 </script>

@@ -1,8 +1,6 @@
 <template>
-  <div class="text-h5 q-gutter-lg row">
-    <div v-for="piece in pieceDescriptions" :key="piece">
-      <div>{{ piece.symbol }}: {{ piece.square }}</div>
-    </div>
+  <div v-for="piece in pieceDescriptions" :key="piece">
+    {{ piece.symbol }}: {{ piece.square }}
   </div>
 </template>
 

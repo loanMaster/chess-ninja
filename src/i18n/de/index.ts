@@ -16,7 +16,7 @@ export default {
       title: 'Finde das Feld',
     },
     'guess-color': {
-      title: 'Schwarz oder weiß?',
+      title: 'Schwarz oder weiss?',
     },
     'same-diagonal': {
       title: 'Gleiche Diagonale',
@@ -30,6 +30,18 @@ export default {
     'save-the-king': {
       title: 'Rette den König',
     },
+    'queen-vs-king': {
+      title: 'Dame gegen König',
+    },
+    'queen-vs-knights': {
+      title: 'Dame gegen zwei Springer',
+    },
+    'rook-vs-king': {
+      title: 'Turm gegen König',
+    },
+    'queen-vs-rook': {
+      title: 'Dame gegen Turm',
+    },
   },
   play_difficulty_0: 'Einfach',
   play_difficulty_1: 'Mittel',
@@ -40,16 +52,16 @@ export default {
     'Welche Farbe hat das Feld { square }?',
   'Are { square1 } and { square2 } on the same diagonal?':
     'Liegen { square1 } und { square2 } auf derselben Diagonalen?',
-  White: 'Weiß',
+  White: 'Weiss',
   Black: 'Schwarz',
-  white: 'weiß',
+  white: 'weiss',
   black: 'schwarz',
   Yes: 'Ja',
   No: 'Nein',
   "Is your king under attack? Bring him to safety otherwise click on 'Not in check'":
     "Wird dein König angegriffen? Bring ihn in Sicherheit, ansonsten klicke auf 'Nicht im Schach'",
   'Not in check': 'Nicht im Schach',
-  'New game as white': 'Neues Spiel mit weiß',
+  'New game as white': 'Neues Spiel mit weiss',
   'New game as black': 'Neues Spiel mit schwarz',
   'Setup board': 'Stellung bearbeiten',
   'Engine level:': 'Schwierigkeit:',
@@ -58,11 +70,11 @@ export default {
   'Hide board': 'Brett ausblenden',
   Reset: 'Zurücksetzen',
   Clear: 'Leeres Brett',
-  'Play as white': 'Start starten (weiß)',
+  'Play as white': 'Start starten (weiss)',
   'Play as black': 'Start starten (schwarz)',
   Learn: 'Üben',
   Play: 'Spielen',
-  'Guess the color': 'Schwarz oder weiß?',
+  'Guess the color': 'Schwarz oder weiss?',
   'Attack the king with your bishop':
     'Greife den gegnerischen König mit deinem Läufer an.',
   'Attack the king with your knight':
@@ -90,4 +102,15 @@ export default {
     'https://freeonlinesurveys.com/s/hE9sh8sl',
   'Please take the following survey to improve ChessNinja:':
     'Bitte nimm an folgender Umfrage Teil, um ChessNinja weiter zu verbessern:',
+  "Checkmate the opponent's king": 'Setze den gegnerischen König Schachmatt',
+  'Black pieces': 'Schwarze Figuren',
+  'White pieces': 'Weisse Figuren',
+  'You play as': 'Du spielst mit',
+  'Click here when you are ready': 'Klicke hier, sobald du bereit bist',
+  'You won!': 'Du hast gewonnen',
+  'You lost': 'Du hast verloren',
+  Scenarios: 'Szenarios',
+  Exercises: 'Übungen',
+  Restart: 'Neu starten',
+  'Give up': 'Aufgeben',
 };

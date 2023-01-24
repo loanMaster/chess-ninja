@@ -37,6 +37,35 @@ const routes: RouteRecordRaw[] = [
         component: () => import('components/setup/SetupBoard.vue'),
       },
       {
+        path: 'scenario',
+        children: [
+          {
+            path: ':game(queen-vs-king)',
+            name: 'queen-vs-king',
+            component: () =>
+              import('components/exercises/BlindfoldChessView.vue'),
+          },
+          {
+            path: ':game(queen-vs-rook)',
+            name: 'queen-vs-rook',
+            component: () =>
+              import('components/exercises/BlindfoldChessView.vue'),
+          },
+          {
+            path: ':game(rook-vs-king)',
+            name: 'rook-vs-king',
+            component: () =>
+              import('components/exercises/BlindfoldChessView.vue'),
+          },
+          {
+            path: ':game(queen-vs-knights)',
+            name: 'queen-vs-knights',
+            component: () =>
+              import('components/exercises/BlindfoldChessView.vue'),
+          },
+        ],
+      },
+      {
         path: 'exercise',
         component: () => import('components/exercises/ExerciseView.vue'),
         children: [
