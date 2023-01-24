@@ -18,7 +18,7 @@
           class="q-mx-sm q-mt-sm q-pt-md-lg q-pt-sm-sm"
           style="height: 100%; overflow: auto"
         >
-          <div class="text-center" v-if="!hasStarted">
+          <div class="text-center q-mb-sm" v-if="!hasStarted">
             <div class="text-h5">
               {{ $t("Checkmate the opponent's king") }}
             </div>
@@ -51,7 +51,7 @@
             >
               <SelectMoveButtons />
             </div>
-            <div class="md-hide lg-hide xl-hide text-center y-mt-lg">
+            <div class="md-hide lg-hide xl-hide text-center y-mt-lg" v-if="!revealed">
               <q-btn color="primary" @click="playAgain">{{
                 $t('Restart')
               }}</q-btn>
