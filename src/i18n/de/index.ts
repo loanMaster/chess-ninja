@@ -109,7 +109,7 @@ export default {
   'Click here when you are ready': 'Klicke hier, sobald du bereit bist',
   'You won!': 'Du hast gewonnen',
   'You lost': 'Du hast verloren',
-  Scenarios: 'Szenarios',
+  Scenarios: 'Szenarien',
   Exercises: 'Übungen',
   Restart: 'Neu starten',
   'Give up': 'Aufgeben',
