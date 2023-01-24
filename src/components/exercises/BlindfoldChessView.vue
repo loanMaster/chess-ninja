@@ -63,8 +63,11 @@
           </div>
           <div
             class="absolute-full"
-            :style="{ opacity: revealed ? 1 : 0 }"
-            style="pointer-events: none"
+            @click="playAgain"
+            :style="{
+              opacity: revealed ? 1 : 0,
+              'pointer-events': revealed ? 'all' : 'none',
+            }"
           >
             <ExerciseBoard />
           </div>
