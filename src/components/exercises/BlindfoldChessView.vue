@@ -68,7 +68,7 @@
               </div>
             </div>
             <div
-              class="column md-hide q-mb-sm lg-hide xl-hide items-center q-gutter-sm"
+              class="row md-hide q-mb-sm lg-hide justify-center xl-hide items-center q-gutter-sm"
             >
               <q-btn color="primary" @click="playAgain">{{
                 $t('Restart')
