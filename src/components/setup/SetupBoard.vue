@@ -82,7 +82,6 @@ async function playAsWhite() {
       pieces: convertPieceConfiguration(board.value.getPosition()),
     },
   });
-  console.log(board.value.getPosition());
   router.push({ name: 'play', params: { language: useAppStore().language } });
 }
 
