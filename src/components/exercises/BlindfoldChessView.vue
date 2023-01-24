@@ -216,7 +216,7 @@ function getInitialPosition() {
       return queenVsKnights();
     case 'queen-vs-king':
     default:
-      return randomConfiguration(['k', 'K', 'q']);
+      return randomConfiguration(['k', 'K', 'Q']);
   }
 }
 
@@ -226,18 +226,18 @@ function queenVsKnights(): { [key: string]: string } {
   let check2 = false;
   let pieces: { [key: string]: string } = {};
   do {
-    pieces = randomConfiguration(['k', 'K', 'q', 'N']);
+    pieces = randomConfiguration(['k', 'K', 'Q', 'n']);
     const knightPosition = Object.keys(pieces).find(
-      (pos) => pieces[pos] === 'N'
+      (pos) => pieces[pos] === 'n'
     )!;
     chessGame.createNew({
-      turn: 'white',
+      turn: 'black',
       pieces,
     });
     const knightMoves = chessGame.moves(knightPosition);
     const knightMove =
       knightMoves[Math.floor(Math.random() * knightMoves.length)];
-    pieces[knightMove.to] = 'N';
+    pieces[knightMove.to] = 'n';
     chessGame.createNew({
       turn: 'white',
       pieces,
@@ -277,13 +277,7 @@ function randomConfiguration(piecesList: string[]): { [key: string]: string } {
 }
 
 const playerColor = computed(() => {
-  switch (nameOfTheGame.value) {
-    case 'queen-vs-king':
-    case 'queen-vs-knights':
-      return 'black';
-    default:
-      return 'white';
-  }
+  return 'white';
 });
 
 function convertToBoardDisplayCoordinates(pieces: { [key: string]: string }) {
