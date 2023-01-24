@@ -46,6 +46,9 @@
           </router-link>
         </div>
       </div>
+    </q-card>
+
+    <q-card class="exercise-block q-mt-xl">
       <div class="exercise-title">{{ $t('Scenarios') }}</div>
       <div class="row-sm column-xs q-col-gutter-lg q-mb-lg">
         <div
