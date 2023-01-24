@@ -15,10 +15,10 @@
         style="max-height: 100%; max-width: 100%"
       >
         <q-card
-          class="q-mx-sm q-mt-sm q-pt-md-lg q-pt-sm-sm"
+          class="q-mx-sm q-mt-sm q-pt-md-lg q-pt-sm-sm q-mb-md-none q-mb-xs-sm q-mb-sm-sm"
           style="height: 100%; overflow: auto"
         >
-          <div class="text-center q-mb-sm" v-if="!hasStarted">
+          <div class="text-center q-mb-sm" v-if="!hasStarted && !revealed">
             <div class="text-h5">
               {{ $t("Checkmate the opponent's king") }}
             </div>
@@ -43,49 +43,39 @@
               }}</q-btn>
             </div>
           </div>
-          <div v-if="hasStarted" class="column full-height">
-            <div
-              class="flex-1"
-              style="overflow-y: auto"
-              :style="{ opacity: revealed ? 0 : 1 }"
-            >
+          <div class="column full-height" v-if="hasStarted || revealed">
+            <div v-if="!revealed" class="flex-1" style="overflow-y: auto">
               <SelectMoveButtons />
             </div>
-            <div class="md-hide lg-hide xl-hide text-center y-mt-lg" v-if="!revealed">
+            <div class="flex-1 q-my-md position-relative" v-if="revealed">
+              <ExerciseBoard />
+              <div
+                class="absolute-full no-pointer-events column justify-center items-center q-mx-auto"
+                style="aspect-ratio: 1; max-height: 100%; max-width: 100%"
+              >
+                <div
+                  v-if="isFinished"
+                  class="text-h4 bg-secondary q-pa-md non-selectable"
+                  style="opacity: 0.7"
+                >
+                  <div class="text-center">
+                    {{ $t(checkMate ? 'Checkmate' : 'Draw') }}
+                  </div>
+                  <div v-if="checkMate">
+                    {{ turn !== playerColor ? $t('You won!') : $t('You lost') }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="column md-hide q-mb-sm lg-hide xl-hide items-center q-gutter-sm"
+            >
               <q-btn color="primary" @click="playAgain">{{
                 $t('Restart')
               }}</q-btn>
               <q-btn color="primary" @click="giveUp" :disable="revealed">{{
                 $t('Give up')
               }}</q-btn>
-              <ToggleChessPieceNotation />
-            </div>
-          </div>
-          <div
-            class="absolute-full"
-            @click="playAgain"
-            :style="{
-              opacity: revealed ? 1 : 0,
-              'pointer-events': revealed ? 'all' : 'none',
-            }"
-          >
-            <ExerciseBoard />
-          </div>
-          <div
-            class="absolute-full no-pointer-events column justify-center items-center q-mx-auto"
-            style="aspect-ratio: 1; max-height: 100%; max-width: 100%"
-          >
-            <div
-              v-if="isFinished"
-              class="text-h4 bg-secondary q-pa-md non-selectable"
-              style="opacity: 0.7"
-            >
-              <div class="text-center">
-                {{ $t(checkMate ? 'Checkmate' : 'Draw') }}
-              </div>
-              <div v-if="checkMate">
-                {{ turn !== playerColor ? $t('You won!') : $t('You lost') }}
-              </div>
             </div>
           </div>
         </q-card>

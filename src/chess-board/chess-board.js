@@ -503,8 +503,6 @@ function calculatePositionFromMoves(position, moves) {
   return newPosition;
 }
 
-// TODO: add some asserts here for calculatePositionFromMoves
-
 // ---------------------------------------------------------------------------
 // HTML
 // ---------------------------------------------------------------------------
@@ -1500,10 +1498,8 @@ export function constructor(containerElOrString, config) {
   };
 
   // move pieces
-  // TODO: this method should be variadic as well as accept an array of moves
   widget.move = function () {
     // no need to throw an error here; just do nothing
-    // TODO: this should return the current position
     if (arguments.length === 0) return;
 
     let useAnimation = true;
@@ -1885,7 +1881,6 @@ export function constructor(containerElOrString, config) {
     $('body').append(buildPieceHTML('wP', true, draggedPieceId));
     $draggedPiece = $('#' + draggedPieceId);
 
-    // TODO: need to remove this dragged piece element if the board is no
     // longer in the DOM
 
     // get the border size
