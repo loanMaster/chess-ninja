@@ -237,6 +237,9 @@ function queenVsKnights(): { [key: string]: string } {
     const knightMoves = chessGame.moves(knightPosition);
     const knightMove =
       knightMoves[Math.floor(Math.random() * knightMoves.length)];
+    if (!knightMove) {
+      continue;
+    }
     pieces[knightMove.to] = 'n';
     chessGame.createNew({
       turn: 'white',
@@ -251,7 +254,7 @@ function queenVsKnights(): { [key: string]: string } {
   } while (
     check1 ||
     check2 ||
-    Object.keys(chessGame.exportJson().pieces).length < 4
+    Object.keys(chessGame.exportJson().pieces).length < 5
   );
   chessGame.terminate();
   return pieces;
