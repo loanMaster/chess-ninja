@@ -6,6 +6,7 @@
   "author": "Incognito",
   "private": true,
   "scripts": {
+    "serve": "quasar dev",
     "build": "quasar build",
     "lint": "eslint --fix --ext .js,.ts,.vue ./ ",
     "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
@@ -29,7 +30,8 @@
     "vue": "^3.0.0",
     "vue-i18n": "^9.2.2",
     "vue-inline-svg": "^3.1.0",
-    "vue-router": "^4.0.0"
+    "vue-router": "^4.0.0",
+    "webpack": "^5.75.0"
   },
   "devDependencies": {
     "@intlify/vite-plugin-vue-i18n": "^3.3.1",
