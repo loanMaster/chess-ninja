@@ -19,7 +19,7 @@ export default {
       title: 'Schwarz oder weiss?',
     },
     'move-your-knight': {
-      title: 'Bring den Springer zum Zielfeld',
+      title: 'Bring den Springer ins Zielfeld',
     },
     'same-diagonal': {
       title: 'Gleiche Diagonale',

@@ -6,12 +6,12 @@
       </div>
       <div class="relative-position justify-center column items-center">
         <div class="g-large-font g-full-width q-mt-md q-pa-md text-h5">
-          <div>{{ 'The target square is' }} {{ target }}</div>
+          <div>{{ $t('The target square is') }} {{ target }}</div>
           <div>
-            {{ 'Your knight is on square' }} <span>{{ knight }}</span>
+            {{ $t('Your knight is on square') }} <span>{{ knight }}</span>
           </div>
         </div>
-        <div class="row q-gutter-md max-width-xs q-mt-md justify-center">
+        <div class="row q-gutter-md max-width-xs q-mt-md justify-center" style="flex: 1 0 auto;">
           <div v-for="move in moves" :key="move" class="text-h5">
             <q-btn push color="primary" @click="select(move, $event)" no-caps>{{
               move
