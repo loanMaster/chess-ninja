@@ -18,6 +18,9 @@ export default {
     'guess-color': {
       title: 'Guess the color',
     },
+    'move-your-knight': {
+      title: 'Move your knight to the target square',
+    },
     'same-diagonal': {
       title: 'Same diagonal',
     },
@@ -105,4 +108,7 @@ export default {
   Exercises: '_',
   Restart: '_',
   'Give up': '_',
+  'Move your knight to the target square': '_',
+  'The target square is': '_',
+  'Your knight is on square': '_',
 };

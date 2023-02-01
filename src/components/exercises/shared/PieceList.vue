@@ -1,5 +1,5 @@
 <template>
-  <div v-for="piece in pieceDescriptions" :key="piece">
+  <div v-for="piece in pieceDescriptions" :key="piece" style="color: black">
     {{ piece.symbol }}: {{ piece.square }}
   </div>
 </template>

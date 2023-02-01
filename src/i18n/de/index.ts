@@ -18,6 +18,9 @@ export default {
     'guess-color': {
       title: 'Schwarz oder weiss?',
     },
+    'move-your-knight': {
+      title: 'Bring den Springer zum Zielfeld',
+    },
     'same-diagonal': {
       title: 'Gleiche Diagonale',
     },
@@ -113,4 +116,8 @@ export default {
   Exercises: 'Übungen',
   Restart: 'Neu starten',
   'Give up': 'Aufgeben',
+  'Move your knight to the target square':
+    'Bewege deinen Springer ins Zielfeld',
+  'The target square is': 'Das Zielfeld ist',
+  'Your knight is on square': 'Dein Springer ist auf',
 };

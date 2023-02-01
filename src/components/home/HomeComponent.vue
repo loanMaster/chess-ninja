@@ -138,6 +138,7 @@ const exercises = ref([
   'attack-with-bishop',
   'attack-with-knight',
   'save-the-king',
+  'move-your-knight',
 ]);
 
 const scenarios = ref([

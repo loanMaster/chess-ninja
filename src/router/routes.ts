@@ -102,6 +102,11 @@ const routes: RouteRecordRaw[] = [
             name: 'find-the-square',
             component: () => import('components/exercises/FindSquareView.vue'),
           },
+          {
+            path: ':game(move-your-knight)',
+            name: 'move-your-knight',
+            component: () => import('components/exercises/MoveTheKnight.vue'),
+          },
         ],
       },
       {
