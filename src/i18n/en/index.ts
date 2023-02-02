@@ -111,4 +111,5 @@ export default {
   'Move your knight to the target square': '_',
   'The target square is': '_',
   'Your knight is on square': '_',
+  'Have a look at our partner website:': '_'
 };
