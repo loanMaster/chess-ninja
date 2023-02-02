@@ -116,8 +116,7 @@ export default {
   Exercises: 'Übungen',
   Restart: 'Neu starten',
   'Give up': 'Aufgeben',
-  'Move your knight to the target square':
-    'Bewege deinen Springer ins Zielfeld',
+  'Move your knight to the target square': 'Bring deinen Springer ins Zielfeld',
   'The target square is': 'Das Zielfeld ist',
   'Your knight is on square': 'Dein Springer ist auf',
 };

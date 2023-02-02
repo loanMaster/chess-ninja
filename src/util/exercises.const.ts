@@ -24,7 +24,7 @@ export const exerciseStats: any = {
     fourStarRating: 25000,
   },
   'move-your-knight': {
-    threeStarRating: 180000,
-    fourStarRating: 90000,
+    threeStarRating: 60000,
+    fourStarRating: 30000,
   },
 };
