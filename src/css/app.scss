@@ -10,12 +10,18 @@
 .text-color-default {
   color: black;
 }
+.pieces-bg {
+  background-color: transparent;
+}
 .body--dark {
   .text-color-default {
     color: white;
   }
   .white-border {
     border: 1px solid white;
+  }
+  .pieces-bg {
+    background-color: lightgray;
   }
 }
 

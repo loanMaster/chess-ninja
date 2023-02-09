@@ -30,7 +30,7 @@
               params: { game: exercise, language: language },
             }"
             class="text-color-default"
-            style="text-decoration: none"
+            style="text-decoration: none; display: block"
           >
             <q-card class="flex-1 cursor-pointer zoom-on-hover">
               <q-card-section class="text-bold text-center bg-exercise">
@@ -62,7 +62,7 @@
               params: { game: exercise, language: language },
             }"
             class="text-color-default column flex-1"
-            style="text-decoration: none"
+            style="text-decoration: none; display: block"
           >
             <q-card class="flex-1 cursor-pointer zoom-on-hover">
               <q-card-section class="text-bold text-center bg-exercise">
@@ -96,7 +96,7 @@
               query: { difficulty: difficulty },
             }"
             class="text-color-default"
-            style="text-decoration: none"
+            style="text-decoration: none; display: block"
           >
             <q-card class="flex-1 cursor-pointer zoom-on-hover">
               <q-card-section
@@ -138,6 +138,7 @@ const exercises = ref([
   'attack-with-bishop',
   'attack-with-knight',
   'save-the-king',
+  'move-your-knight',
 ]);
 
 const scenarios = ref([

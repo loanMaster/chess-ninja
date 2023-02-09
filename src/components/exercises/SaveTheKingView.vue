@@ -12,7 +12,10 @@
           )
         }}
       </div>
-      <div class="g-large-font g-full-width q-mt-md">
+      <div
+        class="g-large-font g-full-width q-mt-md pieces-bg q-pa-md"
+        style="border-radius: 25px"
+      >
         <div class="text-h5 q-gutter-lg row">
           <PieceList :pieces="pieces" />
         </div>

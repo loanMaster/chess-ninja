@@ -27,11 +27,15 @@
             >
               <div class="column q-gutter-sm q-px-md">
                 <div class="q-mb-md-sm">{{ $t('White pieces') }}</div>
-                <PieceList :pieces="whitePieces" />
+                <div class="pieces-bg q-pa-md" style="border-radius: 25px">
+                  <PieceList :pieces="whitePieces" />
+                </div>
               </div>
               <div class="column q-gutter-sm q-px-md">
                 <div class="q-mb-md-sm">{{ $t('Black pieces') }}</div>
-                <PieceList :pieces="blackPieces" />
+                <div class="pieces-bg q-pa-md" style="border-radius: 25px">
+                  <PieceList :pieces="blackPieces" />
+                </div>
               </div>
             </div>
             <div class="text-h6 q-mb-lg">
