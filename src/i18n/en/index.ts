@@ -95,7 +95,7 @@ export default {
   Symbols: '_',
   Letters: '_',
   'Contact:': '_',
-  'https://freeonlinesurveys.com/s/X4gSL5Fu': '_',
+  'https://freeonlinesurveys.com/s/HcoP7tCy': '_',
   'Please take the following survey to improve ChessNinja:': '_',
   "Checkmate the opponent's king": '_',
   'White pieces': '_',

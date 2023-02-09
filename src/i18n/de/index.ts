@@ -101,8 +101,8 @@ export default {
   Symbols: 'Symbole',
   Letters: 'Buchstaben',
   'Contact:': 'Kontakt:',
-  'https://freeonlinesurveys.com/s/X4gSL5Fu':
-    'https://freeonlinesurveys.com/s/hE9sh8sl',
+  'https://freeonlinesurveys.com/s/HcoP7tCy':
+    'https://freeonlinesurveys.com/s/bgXzssSd',
   'Please take the following survey to improve ChessNinja:':
     'Bitte nimm an folgender Umfrage Teil, um ChessNinja weiter zu verbessern:',
   "Checkmate the opponent's king": 'Setze den gegnerischen König Schachmatt',

@@ -55,8 +55,8 @@
         class="text-color-default"
         style="word-break: break-all"
         target="_blank"
-        :href="$t('https://freeonlinesurveys.com/s/X4gSL5Fu')"
-        >{{ $t('https://freeonlinesurveys.com/s/X4gSL5Fu') }}</a
+        :href="$t('https://freeonlinesurveys.com/s/HcoP7tCy')"
+        >{{ $t('https://freeonlinesurveys.com/s/HcoP7tCy') }}</a
       >
     </div>
     <div class="q-mx-auto text-h6 text-center q-mt-xl q-px-sm">
