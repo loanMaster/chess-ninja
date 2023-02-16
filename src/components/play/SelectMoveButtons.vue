@@ -107,6 +107,9 @@ function updateDescription(desc: string) {
     return desc;
   }
   if (appStore.showChessPieceSymbols) {
+    if (desc[0] === '0') {
+      return desc;
+    }
     return (
       (desc[0].toLowerCase() === 'p' ? '' : ChessUtils.getSymbol(desc[0])) +
       desc.substring(1)

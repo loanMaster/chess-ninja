@@ -119,5 +119,5 @@ export default {
   'Move your knight to the target square': 'Bring deinen Springer ins Zielfeld',
   'The target square is': 'Das Zielfeld ist',
   'Your knight is on square': 'Dein Springer ist auf',
-  'Have a look at our partner website:': 'Besuche unsere Partner Website:'
+  'Have a look at our partner website:': 'Besuche unsere Partner Website:',
 };

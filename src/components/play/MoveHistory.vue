@@ -65,7 +65,9 @@ const history = computed(() => {
 
 function updateDescription(desc: string) {
   if (appStore.showChessPieceSymbols) {
-    return ChessUtils.getSymbol(desc[0]) + desc.substring(1);
+    return desc[0].toLowerCase() === '0'
+      ? desc
+      : ChessUtils.getSymbol(desc[0]) + desc.substring(1);
   } else {
     return desc.replace('p', '').replace('P', '');
   }

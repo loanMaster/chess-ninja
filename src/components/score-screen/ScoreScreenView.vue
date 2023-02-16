@@ -68,7 +68,7 @@
         style="word-break: break-all"
         target="_blank"
         :href="'https://braintrainer.io'"
-      >https://braintrainer.io</a
+        >https://braintrainer.io</a
       >
     </div>
   </div>
