@@ -1,5 +1,4 @@
 <template>
-  <MovingColorsBackground />
   <div class="max-width-sm column items-center q-mx-auto">
     <div class="column items-center q-mt-xl">
       <div class="text-h2">ChessNinja</div>
@@ -125,7 +124,6 @@
 </template>
 
 <script setup lang="ts">
-import MovingColorsBackground from 'src/components/backgrounds/MovingColorsBackground.vue';
 import StarsRating from 'src/components/shared/StarsRating.vue';
 import { useAppStore } from 'stores/app-store';
 import { useExerciseStore } from 'stores/exercise.store';

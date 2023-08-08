@@ -1,6 +1,5 @@
 <template>
   <div class="column items-center justify-center non-selectable q-ma-lg">
-    <MovingColorsBackground />
     <q-card
       class="max-width-sm q-pa-lg full-width text-center semi-transparent-background"
     >
@@ -47,36 +46,11 @@
         </div>
       </q-card-section>
     </q-card>
-    <div class="q-mx-auto text-h6 text-center q-mt-xl">
-      <div class="">
-        {{ $t('Please take the following survey to improve ChessNinja:') }}
-      </div>
-      <a
-        class="text-color-default"
-        style="word-break: break-all"
-        target="_blank"
-        :href="$t('https://freeonlinesurveys.com/s/HcoP7tCy')"
-        >{{ $t('https://freeonlinesurveys.com/s/HcoP7tCy') }}</a
-      >
-    </div>
-    <div class="q-mx-auto text-h6 text-center q-mt-xl q-px-sm">
-      <div class="">
-        {{ $t('Have a look at our partner website:') }}
-      </div>
-      <a
-        class="text-color-default"
-        style="word-break: break-all"
-        target="_blank"
-        :href="'https://braintrainer.io'"
-        >https://braintrainer.io</a
-      >
-    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import StarsRating from 'src/components/shared/StarsRating.vue';
-import MovingColorsBackground from 'src/components/backgrounds/MovingColorsBackground.vue';
 
 import { useAppStore } from 'src/stores/app-store';
 import { useRouter } from 'vue-router';
