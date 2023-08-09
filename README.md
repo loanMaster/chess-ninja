@@ -1,6 +1,6 @@
-# Brain Trainer (brain-trainer-app)
+# Chess Ninja
 
-The Brain Trainer based on Audio
+Learn blind chess on [chessninja.org](https://chessninja.org)
 
 ## Install the dependencies
 
