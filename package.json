@@ -11,7 +11,7 @@
     "lint": "eslint --fix --ext .js,.ts,.vue ./ ",
     "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
     "test": "playwright test --headed",
-    "server": "simple-static-server",
+    "server": "cross-env-shell APP_DIST_FOLDER=dist/spa PORT=3002 simple-static-server ",
     "server-prod": "cross-env-shell APP_DIST_FOLDER=dist/spa KEY_FILE=/etc/letsencrypt/live/chessninja.org/privkey.pem CERT_FILE=/etc/letsencrypt/live/chessninja.org/fullchain.pem PORT=443 simple-static-server"
   },
   "dependencies": {
