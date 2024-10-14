@@ -100,11 +100,9 @@ export const useExerciseStore = defineStore('exercise', {
           score,
           date: Date.now(),
         });
-        store(this.playerScores, 'playerScores');
       } else if (matchingScore.score < score) {
         matchingScore.score = score;
         matchingScore.date = Date.now();
-        store(this.playerScores, 'playerScores');
       }
       store(this.playerScores, 'playerScores');
     },

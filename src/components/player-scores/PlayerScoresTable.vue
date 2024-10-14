@@ -30,6 +30,7 @@
           <q-btn
             size="md"
             color="primary"
+            v-if="progressDiagram"
             dense
             :data-testid="'showProgress-' + props.row.nameOfTheGameOri"
             @click="showProgress(props)"
@@ -41,7 +42,8 @@
           <span v-if="col.name !== 'stars'">{{ col.value }}</span>
           <StarsRating
             class="text-h5"
-            :rating="col.value"
+            :max="maxStars"
+            :rating="Math.min(col.value, maxStars || 5)"
             v-if="col.name === 'stars'"
           />
         </q-td>
@@ -66,6 +68,7 @@
                 size="md"
                 color="primary"
                 dense
+                v-if="progressDiagram"
                 @click="showProgress(props)"
                 :icon="matAssessment"
                 class="q-ml-sm"
@@ -75,7 +78,11 @@
           <q-separator />
           <q-card-section class="column" style="margin-top: -12px">
             <div class="row justify-center">
-              <StarsRating class="text-h5" :rating="props.row.stars" />
+              <StarsRating
+                class="text-h5"
+                :rating="Math.min(props.row.stars, maxStars || 5)"
+                :max="maxStars"
+              />
             </div>
             <div class="row justify-between">
               <div>{{ $t('Rating') }}</div>
@@ -104,6 +111,8 @@ const store = useAppStore();
 
 const props = defineProps({
   scores: Array,
+  progressDiagram: Boolean,
+  maxStars: Number,
 });
 
 const emits = defineEmits(['show-progress-diagram']);

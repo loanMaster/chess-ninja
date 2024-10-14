@@ -107,7 +107,7 @@ import MoveHistory from 'src/components/play/MoveHistory.vue';
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { useChessGameStore } from 'stores/chess-game.store';
 import { useRoute } from 'vue-router';
-import { useExerciseStore } from 'stores/exercise.store';
+import { useExerciseStore, newExercise } from 'stores/exercise.store';
 import { ChessGame } from 'src/engine/chess-game';
 import { ChessUtils } from 'src/util/chess-utils';
 
@@ -116,6 +116,9 @@ const revealed = ref(false);
 const route = useRoute();
 
 onMounted(() => {
+  useExerciseStore().$patch((store) => {
+    store.exercise = newExercise(useRoute().params.game as string, 1);
+  });
   useExerciseStore().$patch((store) => {
     store.board = {
       ...store.board,
@@ -129,10 +132,7 @@ onMounted(() => {
     if (isFinished.value) {
       revealed.value = true;
       if (checkMate.value && turn.value !== playerColor.value) {
-        useExerciseStore().updateRating({
-          nameOfTheGame: nameOfTheGame.value,
-          value: 1,
-        });
+        useExerciseStore().updateRating(100, nameOfTheGame.value);
       }
     }
     useExerciseStore().$patch((store) => {

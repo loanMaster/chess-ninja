@@ -70,7 +70,7 @@
               <q-card-section class="text-center">
                 <StarsRating
                   :max="1"
-                  :rating="getStars(exercise)"
+                  :rating="Math.min(1, getStars(exercise))"
                   class="text-h4 q-ml-xs"
                 />
               </q-card-section>

@@ -15,13 +15,27 @@
     </q-dialog>
 
     <div
-      class="words-table-header"
+      class="exercise-table-header"
       v-if="scores.length > 0"
-      data-testid="words-table"
+      data-testid="exercise-table"
     >
+      <div class="text-h5">{{ $t('Exercises') }}</div>
       <PlayerScoresTable
         @show-progress-diagram="showProgress"
         :scores="scores"
+        :progress-diagram="true"
+      />
+    </div>
+    <div
+      class="scenario-table-header q-mt-md"
+      v-if="scenarioScores.length > 0"
+      data-testid="scenario-table"
+    >
+      <div class="text-h5">{{ $t('Scenarios') }}</div>
+      <PlayerScoresTable
+        :max-stars="1"
+        :progress-diagram="false"
+        :scores="scenarioScores"
       />
     </div>
   </div>
@@ -47,8 +61,30 @@ function showProgress(props: { game: string }) {
   showProgressDiagram.value = true;
 }
 
+const exercises = [
+  'guess-color',
+  'same-diagonal',
+  'attack-with-bishop',
+  'attack-with-knight',
+  'save-the-king',
+  'find-the-square',
+  'move-your-knight',
+];
+const scenarios = [
+  'queen-vs-king',
+  'queen-vs-rook',
+  'rook-vs-king',
+  'queen-vs-knights',
+];
 const scores = computed(() => {
-  return useExerciseStore().playerScores?.scores;
+  return useExerciseStore().playerScores?.scores.filter(
+    (s) => exercises.indexOf(s.nameOfTheGame) > -1
+  );
+});
+const scenarioScores = computed(() => {
+  return useExerciseStore().playerScores?.scores.filter(
+    (s) => scenarios.indexOf(s.nameOfTheGame) > -1
+  );
 });
 </script>
 
