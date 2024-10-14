@@ -1,8 +1,11 @@
 import { defineStore } from 'pinia';
-import { exerciseStats } from 'src/util/exercises.const';
+import { mapScoreToRating } from 'src/util/calculate-rating';
+import { calculateScore } from 'src/util/calculate-score';
 
-export interface Ratings {
-  [key: string]: number;
+export interface Score {
+  nameOfTheGame: string;
+  score: number;
+  date: number;
 }
 
 export interface Exercise {
@@ -17,6 +20,7 @@ export interface Exercise {
   lastStrike: number;
   lastSuccessfulStrike: number;
   currentQuestion: number;
+  score?: number;
   rating?: number;
 }
 
@@ -45,48 +49,38 @@ export interface BoardState {
 }
 
 export interface ExerciseState {
-  ratings: Ratings;
+  playerScores: { scores: Score[] };
+  scoreHistory: Score[];
   exercise: Exercise;
   board: BoardState;
 }
 
-const loadRatings = (): Ratings => {
-  return JSON.parse(localStorage.getItem('ratings') || '{}');
+const store = (data: any, key: string) => {
+  localStorage.setItem(key, btoa(JSON.stringify(data)));
 };
-
-const saveRatings = (ratings: Ratings): void => {
-  localStorage.setItem('ratings', JSON.stringify(ratings));
-};
-
-const calculateRating = (
-  exerciseName: string,
-  strikes: number,
-  duration: number
-) => {
-  if (strikes > 3) {
-    return 0;
+const fetch = (key: string) => {
+  const data = localStorage.getItem(key);
+  if (data) {
+    return JSON.parse(atob(data));
+  } else {
+    return undefined;
   }
-  if (strikes > 1) {
-    return 1;
-  }
-  if (strikes > 0) {
-    return 2;
-  }
-  if (duration > exerciseStats[exerciseName].threeStarRating) {
-    return 3;
-  }
-  if (duration > exerciseStats[exerciseName].fourStarRating) {
-    return 4;
-  }
-  return 5;
 };
 
 export const useExerciseStore = defineStore('exercise', {
   state: (): ExerciseState => {
-    const ratings = loadRatings();
+    const playerScores = fetch('playerScores');
+    if (playerScores === undefined) {
+      store({ scores: [] }, 'playerScores');
+    }
+    const scoreHistory = fetch('scoreHistory');
+    if (scoreHistory === undefined) {
+      store([], 'scoreHistory');
+    }
     return {
       exercise: newExercise('guess-color', 10),
-      ratings,
+      playerScores,
+      scoreHistory,
       board: {
         orientation: 'white',
         pieces: {},
@@ -96,12 +90,23 @@ export const useExerciseStore = defineStore('exercise', {
     } as ExerciseState;
   },
   actions: {
-    async updateRating(rating: { value: number; nameOfTheGame: string }) {
-      const gameRating = this.ratings[rating.nameOfTheGame] || -1;
-      if (gameRating < rating.value) {
-        this.ratings[rating.nameOfTheGame] = rating.value;
+    updateRating(score: number, nameOfTheGame: string) {
+      const matchingScore = this.playerScores.scores.find(
+        (s) => s.nameOfTheGame === this.exercise.nameOfTheGame
+      );
+      if (!matchingScore) {
+        this.playerScores.scores.push({
+          nameOfTheGame,
+          score,
+          date: Date.now(),
+        });
+        store(this.playerScores, 'playerScores');
+      } else if (matchingScore.score < score) {
+        matchingScore.score = score;
+        matchingScore.date = Date.now();
+        store(this.playerScores, 'playerScores');
       }
-      saveRatings(this.ratings);
+      store(this.playerScores, 'playerScores');
     },
     playerReady() {
       // noop
@@ -113,15 +118,22 @@ export const useExerciseStore = defineStore('exercise', {
     finishExercise() {
       this.exercise.duration = Date.now() - this.exercise.beginTimeStamp;
       this.exercise.state = 'finished';
-      this.exercise.rating = calculateRating(
-        this.exercise.nameOfTheGame,
+      this.exercise.score = calculateScore(
+        this.exercise.totalQuestions,
         this.exercise.totalStrikeCount,
-        this.exercise.duration
+        this.exercise.duration,
+        6_000
       );
-      this.updateRating({
-        value: this.exercise.rating,
-        nameOfTheGame: this.exercise.nameOfTheGame,
-      });
+      this.exercise.rating = mapScoreToRating(this.exercise.score);
+      if (this.scoreHistory !== undefined) {
+        this.scoreHistory.push({
+          nameOfTheGame: this.exercise.nameOfTheGame,
+          score: this.exercise.score,
+          date: Date.now(),
+        });
+        store(this.scoreHistory, 'scoreHistory');
+      }
+      this.updateRating(this.exercise.score, this.exercise.nameOfTheGame);
     },
     strike(): boolean {
       this.exercise.lastSuccessfulStrike = Date.now();

@@ -114,6 +114,7 @@
 
 <script setup lang="ts">
 import StarsRating from 'src/components/shared/StarsRating.vue';
+import { mapScoreToRating } from 'src/util/calculate-rating';
 import { useAppStore } from 'stores/app-store';
 import { useExerciseStore } from 'stores/exercise.store';
 import { computed, ref } from 'vue';
@@ -145,7 +146,10 @@ const language = computed(() => {
 });
 
 function getStars(exercise: string) {
-  return useExerciseStore().ratings[exercise] || 0;
+  const matchingExercise = (useExerciseStore().playerScores.scores || []).find(
+    (s) => s.nameOfTheGame === exercise
+  );
+  return mapScoreToRating(matchingExercise?.score || 0);
 }
 </script>
 

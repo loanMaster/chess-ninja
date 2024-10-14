@@ -120,4 +120,18 @@ export default {
   'The target square is': 'Das Zielfeld ist',
   'Your knight is on square': 'Dein Springer ist auf',
   'Have a look at our partner website:': 'Besuche unsere Partner Website:',
+  User: 'Benutzer',
+  Rating: 'Bewertung',
+  Date: 'Datum',
+  'Your rating': 'Deine Bewertung',
+  'Your ratings': 'Deine Bewertungen',
+  'Top % of users': 'Top % der Nutzer',
+  Stars: 'Sterne',
+  Evaluation: 'Auswertung',
+  Solved: 'Gelöst',
+  Exercise: 'Übung',
+  Progress: 'Fortschritt',
+  'Please take the following survey to improve HearHealthy:':
+    'Bitte nimm an folgender Umfrage Teil, um HearHealthy weiter zu verbessern:',
+  SURVEY_URL: 'https://freeonlinesurveys.com/s/bgXzssSd',
 };

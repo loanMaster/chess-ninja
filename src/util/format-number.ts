@@ -12,3 +12,10 @@ export function padNumber(input: number, size: number) {
   }
   return num;
 }
+
+export const formatScore = (num: number, lang: string) => {
+  return num.toLocaleString(lang, {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1,
+  });
+};

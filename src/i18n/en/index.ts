@@ -112,4 +112,18 @@ export default {
   'The target square is': '_',
   'Your knight is on square': '_',
   'Have a look at our partner website:': '_',
+  User: '_',
+  Rating: '_',
+  Date: '_',
+  'Your rating': '_',
+  'Your ratings': '_',
+  'Top % of users': '_',
+  Stars: 'Sterne',
+  Evaluation: '_',
+  Solved: '_',
+  Progress: '_',
+  Exercise: '_',
+  'Please take the following survey to improve HearHealthy:':
+    'Bitte nimm an folgender Umfrage Teil, um HearHealthy weiter zu verbessern:',
+  SURVEY_URL: 'https://freeonlinesurveys.com/s/HcoP7tCy',
 };

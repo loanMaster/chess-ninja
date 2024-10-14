@@ -5,14 +5,35 @@ import {
 } from 'vue-router';
 import MainLayout from 'src/layouts/MainLayout.vue';
 import { useChessGameStore } from 'stores/chess-game.store';
+import { useExerciseStore } from 'src/stores/exercise.store';
+import { useAppStore } from 'src/stores/app-store';
+
+const exerciseFinishedGuard = (
+  to: RouteLocationNormalized,
+  from: RouteLocationNormalized,
+  next: NavigationGuardNext
+) => {
+  if (useExerciseStore().exercise.state !== 'finished') {
+    next({ name: 'home', params: { language: useAppStore().language } });
+  } else {
+    next();
+  }
+};
 
 const routes: RouteRecordRaw[] = [
   {
     path: '/:language(es|de|en)?',
     component: MainLayout,
     children: [
+      { path: '', redirect: 'home' },
       {
-        path: '',
+        path: 'progress',
+        name: 'progress',
+        component: () =>
+          import('components/player-scores/PlayerScoresLayout.vue'),
+      },
+      {
+        path: 'home',
         name: 'home',
         component: () => import('components/home/HomeComponent.vue'),
       },
@@ -113,6 +134,7 @@ const routes: RouteRecordRaw[] = [
         path: 'score-screen',
         name: 'score-screen',
         component: () => import('components/score-screen/ScoreScreenView.vue'),
+        beforeEnter: exerciseFinishedGuard,
       },
     ],
   },
